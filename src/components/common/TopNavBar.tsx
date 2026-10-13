@@ -1,5 +1,6 @@
 import React from 'react';
 import { useClinic, RouteType } from '../../context/ClinicContext';
+import { RoleSwitcher } from './RoleSwitcher';
 
 const specialtiesList = [
   'All',
@@ -83,6 +84,9 @@ export const TopNavBar: React.FC<{ onToggleMobileMenu: () => void }> = ({ onTogg
 
           {/* Icon Action Cluster */}
           <div className="flex items-center gap-1 pl-1 sm:pl-2 border-l border-[#C9C4D8]/40">
+            {/* Role Switcher */}
+            <RoleSwitcher />
+
             {/* Notifications */}
             <button
               onClick={() => setCurrentRoute('settings')}

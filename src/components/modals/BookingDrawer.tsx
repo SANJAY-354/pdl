@@ -24,11 +24,11 @@ export const BookingDrawer: React.FC = () => {
 
   if (!isBookingDrawerOpen) return null;
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (step < 3) {
       setStep((step + 1) as 1 | 2 | 3 | 4);
     } else if (step === 3) {
-      const apt = addNewAppointment({
+      const apt = await addNewAppointment({
         patientName,
         patientPhone: phone,
         mrn: mrn || `MRN-${Math.floor(10000 + Math.random() * 90000)}`,

@@ -8,7 +8,10 @@ export const AIApprovalModal: React.FC = () => {
     selectedRecommendation,
     approveRecommendation,
     dismissRecommendation,
+    currentUser,
   } = useClinic();
+
+  const isAdmin = currentUser?.role === 'admin';
 
   const [adminNotes, setAdminNotes] = useState('');
   const [isApplying, setIsApplying] = useState(false);
@@ -128,41 +131,63 @@ export const AIApprovalModal: React.FC = () => {
           </div>
 
           {/* Buttons */}
-          <div className="pt-2 flex items-center justify-between gap-3 border-t border-[#E8E3F3]">
-            <button
-              onClick={handleDismiss}
-              className="px-4 py-2.5 rounded-xl border border-[#C9C4D8] text-[#797587] hover:text-[#ba1a1a] hover:bg-red-50 text-xs font-bold transition-colors"
-            >
-              Dismiss Recommendation
-            </button>
-            <div className="flex items-center gap-2">
+          <div className="pt-2 space-y-3 border-t border-[#E8E3F3]">
+            {/* Non-admin lock notice */}
+            {!isAdmin && (
+              <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                <span className="material-symbols-outlined text-amber-600 text-lg shrink-0">lock</span>
+                <p className="text-xs text-amber-800 font-medium">
+                  <span className="font-bold">Admin role required</span> to approve AI recommendations.
+                  Switch to <span className="font-bold">CMO / Admin</span> role using the role switcher in the top bar.
+                </p>
+              </div>
+            )}
+            <div className="flex items-center justify-between gap-3">
               <button
-                onClick={() => setIsAIApprovalModalOpen(false)}
-                className="px-4 py-2.5 rounded-xl border border-[#C9C4D8] text-[#484555] hover:bg-[#F7F1FF] text-xs font-bold"
+                onClick={handleDismiss}
+                className="px-4 py-2.5 rounded-xl border border-[#C9C4D8] text-[#797587] hover:text-[#ba1a1a] hover:bg-red-50 text-xs font-bold transition-colors"
               >
-                Cancel
+                Dismiss Recommendation
               </button>
-              <button
-                onClick={handleApprove}
-                disabled={isApplying}
-                className="px-5 py-2.5 rounded-xl bg-[#c7ee55] hover:bg-[#caf158] text-[#536b00] text-xs font-extrabold shadow-md shadow-[#c7ee55]/40 active:scale-95 transition-all flex items-center gap-1.5"
-              >
-                {isApplying ? (
-                  <>
-                    <span className="material-symbols-outlined text-base animate-spin">
-                      sync
-                    </span>
-                    <span>Enacting Rebalancing...</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="material-symbols-outlined text-base">
-                      verified
-                    </span>
-                    <span>Approve & Apply Optimization</span>
-                  </>
-                )}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsAIApprovalModalOpen(false)}
+                  className="px-4 py-2.5 rounded-xl border border-[#C9C4D8] text-[#484555] hover:bg-[#F7F1FF] text-xs font-bold"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleApprove}
+                  disabled={isApplying || !isAdmin}
+                  title={!isAdmin ? 'Admin role required to approve AI recommendations' : undefined}
+                  className={`px-5 py-2.5 rounded-xl text-xs font-extrabold shadow-md active:scale-95 transition-all flex items-center gap-1.5 ${
+                    isAdmin
+                      ? 'bg-[#c7ee55] hover:bg-[#caf158] text-[#536b00] shadow-[#c7ee55]/40'
+                      : 'bg-[#E8E3F3] text-[#A09AB8] cursor-not-allowed shadow-none'
+                  }`}
+                >
+                  {isApplying ? (
+                    <>
+                      <span className="material-symbols-outlined text-base animate-spin">
+                        sync
+                      </span>
+                      <span>Enacting Rebalancing...</span>
+                    </>
+                  ) : !isAdmin ? (
+                    <>
+                      <span className="material-symbols-outlined text-base">lock</span>
+                      <span>Admin Only</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="material-symbols-outlined text-base">
+                        verified
+                      </span>
+                      <span>Approve & Apply Optimization</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -26,6 +26,14 @@ export interface PatientQueueItem {
   predictedWaitMinutes: number;
   status: QueueStatus;
   notes?: string;
+  version_id?: number;
+}
+
+export interface StaffUser {
+  id: number;
+  email: string;
+  full_name: string;
+  role: 'admin' | 'doctor' | 'receptionist';
 }
 
 export interface Doctor {
