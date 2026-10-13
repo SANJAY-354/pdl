@@ -111,8 +111,23 @@ Client URL: **http://localhost:3000**
 
 ---
 
-## 🔌 Modular Integrations
+## 🔌 Modular Integrations (Configurable & Decoupled)
 
-- **Notifications Module** (`backend/app/modules/notifications`): Configurable provider interface with `MockNotificationProvider` and `LogNotificationProvider`.
-- **FHIR Client** (`backend/app/modules/fhir`): Patient identifier resolver with standalone simulation mode.
-- **Audio Announcement** (`backend/app/modules/audio`): PA loudspeaker chime synthesis payload formatter.
+All external integrations are strictly optional, decoupled, and gracefully fall back to standalone simulation when external credentials are not present:
+
+### 1. Audio Lounge Loudspeaker & Chime Synthesis
+- **Web Audio API**: Synthesizes a pleasant 3-tone clinic bell chime ($C_5 \to E_5 \to G_5$, frequencies 523.25 Hz, 659.25 Hz, 783.99 Hz) with soft bell envelopes directly in the user's browser.
+- **Web Speech API**: Uses browser `speechSynthesis` to speak phonetic announcements (e.g. *"Calling Token C A R D 1 0 4 to Consultation Room 101"*) with adjustable cadence and voice selection.
+- **Backend Service**: Configurable via `ENABLE_AUDIO_CHIME=true/false` with phonetic text generator.
+
+### 2. SMS & WhatsApp Patient Notifications
+- **Configurable Provider Architecture**: Switches via `NOTIFICATION_PROVIDER=mock|twilio|log`.
+- **Mock Mode (Default)**: Dispatches simulated SMS and WhatsApp messages without incurring API fees or requiring external secrets.
+- **Twilio Provider**: Reads `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_FROM_NUMBER`, and `TWILIO_WHATSAPP_FROM` from `.env`. Dispatches live SMS and WhatsApp messages via standard HTTPS requests.
+- **Interactive UI Dispatcher**: Test and trigger messages directly from the Diagnostic Console under **Clinic Settings**.
+
+### 3. HL7 FHIR R4 Interoperability
+- **Standards Compliant**: Exports internal appointments to HL7 FHIR R4 `Appointment` resources and parses `Patient` identifiers (`identifier[0].value = MRN`).
+- **Standalone Simulation**: Enabled when `FHIR_SERVER_URL` is empty. Provides valid FHIR R4 JSON representations without external hospital EMR infrastructure dependencies.
+- **Live Mode**: Set `FHIR_SERVER_URL=https://fhir.hospital-system.org/r4` to automatically query external FHIR servers.
+

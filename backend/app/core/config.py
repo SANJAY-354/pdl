@@ -26,6 +26,16 @@ class Settings(BaseSettings):
     # ML Models path
     MODEL_DIR: str = os.getenv("MODEL_DIR", "./backend/app/ml/models")
 
+    # Optional Modular Integrations
+    NOTIFICATION_PROVIDER: str = os.getenv("NOTIFICATION_PROVIDER", "mock")  # mock | twilio | log
+    TWILIO_ACCOUNT_SID: str = os.getenv("TWILIO_ACCOUNT_SID", "")
+    TWILIO_AUTH_TOKEN: str = os.getenv("TWILIO_AUTH_TOKEN", "")
+    TWILIO_FROM_NUMBER: str = os.getenv("TWILIO_FROM_NUMBER", "")
+    TWILIO_WHATSAPP_FROM: str = os.getenv("TWILIO_WHATSAPP_FROM", "")
+    
+    FHIR_SERVER_URL: str = os.getenv("FHIR_SERVER_URL", "")  # Empty = standalone/simulated FHIR
+    ENABLE_AUDIO_CHIME: bool = os.getenv("ENABLE_AUDIO_CHIME", "true").lower() in ("true", "1", "yes")
+
     model_config = SettingsConfigDict(case_sensitive=True, env_file=".env", extra="ignore")
 
 settings = Settings()

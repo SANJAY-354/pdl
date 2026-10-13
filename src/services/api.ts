@@ -89,4 +89,21 @@ export const api = {
 
   // Notifications
   getNotifications: () => apiRequest<any[]>('/notifications'),
+
+  // Modular Integrations (Audio, SMS/WhatsApp, FHIR)
+  getIntegrationsStatus: () => apiRequest<any>('/integrations/status'),
+  dispatchNotification: (to_phone: string, message: string, channel: 'sms' | 'whatsapp' = 'sms') =>
+    apiRequest<any>('/integrations/notifications/dispatch', {
+      method: 'POST',
+      body: JSON.stringify({ to_phone, message, channel }),
+    }),
+  broadcastAudio: (token_number: string, room_number: string, text?: string) =>
+    apiRequest<any>('/integrations/audio/broadcast', {
+      method: 'POST',
+      body: JSON.stringify({ token_number, room_number, text }),
+    }),
+  lookupFhirPatient: (mrn: string) => apiRequest<any>(`/integrations/fhir/patient/${encodeURIComponent(mrn)}`),
+  exportAppointmentToFhir: (appointmentId: number) =>
+    apiRequest<any>(`/integrations/fhir/appointment/${appointmentId}`),
 };
+

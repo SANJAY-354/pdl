@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useClinic } from '../../context/ClinicContext';
+import { IntegrationConsole } from './IntegrationConsole';
 
 export const ClinicSettings: React.FC = () => {
   const { notifications, settings, updateSettings, showToast } = useClinic();
@@ -254,6 +255,9 @@ export const ClinicSettings: React.FC = () => {
           </form>
         </div>
       </div>
+
+      {/* Modular Integrations Test & Diagnostic Console */}
+      <IntegrationConsole />
     </div>
   );
 };

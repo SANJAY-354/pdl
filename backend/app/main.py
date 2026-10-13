@@ -7,7 +7,7 @@ from backend.app.core.database import engine, Base, SessionLocal
 from backend.app.core.websocket_manager import ws_manager
 
 # Import API Routers
-from backend.app.api import auth, queue, appointments, doctors, specialties, ai, notifications
+from backend.app.api import auth, queue, appointments, doctors, specialties, ai, notifications, integrations
 from backend.app.seed import seed_database
 
 @asynccontextmanager
@@ -45,6 +45,7 @@ app.include_router(doctors.router, prefix=settings.API_V1_STR)
 app.include_router(specialties.router, prefix=settings.API_V1_STR)
 app.include_router(ai.router, prefix=settings.API_V1_STR)
 app.include_router(notifications.router, prefix=settings.API_V1_STR)
+app.include_router(integrations.router, prefix=settings.API_V1_STR)
 
 # Real-Time WebSocket Channel
 @app.websocket("/ws/queue")

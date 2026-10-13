@@ -82,3 +82,50 @@ def test_ml_prediction_endpoint():
         assert data["predicted_wait_minutes"] >= 0
         assert data["confidence_score"] > 80
         assert data["is_simulated"] is True
+
+def test_modular_integrations_endpoints():
+    with TestClient(app) as client:
+        # Login as staff/admin
+        login_resp = client.post("/api/v1/auth/login", json={
+            "email": "admin@mediflow.ai",
+            "password": "adminpassword123"
+        })
+        token = login_resp.json()["access_token"]
+        headers = {"Authorization": f"Bearer {token}"}
+
+        # 1. Test Integrations Status
+        status_resp = client.get("/api/v1/integrations/status")
+        assert status_resp.status_code == 200
+        status_data = status_resp.json()
+        assert "notifications" in status_data
+        assert "fhir" in status_data
+        assert "audio" in status_data
+
+        # 2. Test Notification dispatch (mock provider)
+        notif_resp = client.post("/api/v1/integrations/notifications/dispatch", json={
+            "to_phone": "+15551234567",
+            "message": "Token CARD-101 called to Room 101",
+            "channel": "sms"
+        }, headers=headers)
+        assert notif_resp.status_code == 200
+        notif_data = notif_resp.json()
+        assert notif_data["status"] == "delivered"
+        assert notif_data["provider"] == "mock"
+
+        # 3. Test Audio Broadcast
+        audio_resp = client.post("/api/v1/integrations/audio/broadcast", json={
+            "token_number": "CARD-101",
+            "room_number": "101"
+        }, headers=headers)
+        assert audio_resp.status_code == 200
+        audio_data = audio_resp.json()
+        assert audio_data["token_number"] == "CARD-101"
+        assert "phonetic_announcement" in audio_data
+
+        # 4. Test FHIR Patient Lookup (standalone simulated mode)
+        fhir_resp = client.get("/api/v1/integrations/fhir/patient/MRN-78291", headers=headers)
+        assert fhir_resp.status_code == 200
+        fhir_patient = fhir_resp.json()
+        assert fhir_patient["resourceType"] == "Patient"
+        assert fhir_patient["id"] == "MRN-78291"
+
