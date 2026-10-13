@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: mediflow_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-mediflow_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mediflow_secure_pwd_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-mediflow_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-mediflow_user} -d ${POSTGRES_DB:-mediflow_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. FastAPI Backend Service
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: mediflow_backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-mediflow_user}:${POSTGRES_PASSWORD:-mediflow_secure_pwd_2026}@postgres:5432/${POSTGRES_DB:-mediflow_db}
+      SECRET_KEY: ${SECRET_KEY:-mediflow_production_secret_key_change_me_987654321}
+      NOTIFICATION_PROVIDER: ${NOTIFICATION_PROVIDER:-mock}
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_FROM_NUMBER: ${TWILIO_FROM_NUMBER:-}
+      TWILIO_WHATSAPP_FROM: ${TWILIO_WHATSAPP_FROM:-}
+      FHIR_SERVER_URL: ${FHIR_SERVER_URL:-}
+      ENABLE_AUDIO_CHIME: ${ENABLE_AUDIO_CHIME:-true}
+    ports:
+      - "8000:8000"
+
+  # 3. React + Vite Frontend (Nginx SPA)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mediflow_frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  postgres_data:

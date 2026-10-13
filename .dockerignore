@@ -1,0 +1,26 @@
+# Git & Build directories
+node_modules
+dist
+build
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Databases and Local State
+*.db
+*.sqlite
+*.sqlite3
+mediflow.db
+
+# Secrets & Environment Files
+.env
+.env.local
+.env.*.local
+
+# IDE & OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db

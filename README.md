@@ -109,6 +109,16 @@ npm.cmd run dev
 ```
 Client URL: **http://localhost:3000**
 
+### 3. Containerized Stack (Docker & Docker Compose)
+Run the entire production-ready stack (PostgreSQL + FastAPI + Nginx React SPA) with a single command:
+```bash
+docker compose up --build
+```
+- Frontend: **http://localhost:3000**
+- Backend API Docs: **http://localhost:8000/docs**
+- PostgreSQL: **localhost:5432** (Database: `mediflow_db`)
+
+
 ---
 
 ## 🔌 Modular Integrations (Configurable & Decoupled)
