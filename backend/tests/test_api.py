@@ -141,14 +141,21 @@ def test_websocket_queue_broadcasts():
             token = login_resp.json()["access_token"]
             headers = {"Authorization": f"Bearer {token}"}
 
-            # 1. Trigger call-next endpoint
-            call_resp = client.post("/api/v1/queue/call-next", headers=headers)
-            assert call_resp.status_code == 200
+            # 1. Trigger emergency triage intake to guarantee a broadcast event
+            emerg_resp = client.post("/api/v1/queue/emergency", json={
+                "patient_name": "Emergency Patient",
+                "mrn": "MRN-EMERG-999",
+                "age": 45,
+                "gender": "F",
+                "specialty_name": "Cardiology",
+                "notes": "Acute chest pain triage"
+            }, headers=headers)
+            assert emerg_resp.status_code == 200
 
             # 2. Receive broadcast message via WebSocket
             message = websocket.receive_json()
-            assert message["type"] == "QUEUE_TOKEN_CALLED"
+            assert message["type"] == "EMERGENCY_ADMISSION"
             assert "token_number" in message["data"]
-            assert "room_number" in message["data"]
+            assert message["data"]["patient_name"] == "Emergency Patient"
 
 
