@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediFlow AI - Patient Appointment Booking &amp; Confirmation Flow</title>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Config from Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-container": "#fffeff",
+            "inverse-primary": "#c9beff",
+            "on-primary": "#ffffff",
+            "surface-dim": "#ddd5fc",
+            "surface-bright": "#fdf8ff",
+            "surface-container-highest": "#e6deff",
+            "surface-container-low": "#f7f1ff",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#ece4ff",
+            "on-background": "#1c1734",
+            "on-surface": "#1c1734",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "inverse-surface": "#312c4a",
+            "on-primary-container": "#fffdff",
+            "secondary-fixed": "#caf158",
+            "secondary": "#506600",
+            "primary": "#5d39e5",
+            "surface-tint": "#5e3be7",
+            "tertiary": "#a92d51",
+            "surface-variant": "#e6deff",
+            "tertiary-fixed": "#ffd9de",
+            "surface": "#fdf8ff",
+            "on-tertiary-fixed-variant": "#8b133b",
+            "on-secondary-fixed": "#161f00",
+            "primary-fixed": "#e6deff",
+            "outline-variant": "#c9c4d8",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#484555",
+            "outline": "#797587",
+            "tertiary-fixed-dim": "#ffb2bf",
+            "surface-container": "#f1ebff",
+            "on-tertiary-fixed": "#3f0015",
+            "secondary-container": "#c7ee55",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#3b4d00",
+            "primary-fixed-dim": "#c9beff",
+            "secondary-fixed-dim": "#afd43e",
+            "on-primary-fixed-variant": "#4612cf",
+            "on-secondary-container": "#536b00",
+            "background": "#fdf8ff",
+            "tertiary-container": "#ca4669",
+            "primary-container": "#7657ff",
+            "inverse-on-surface": "#f4eeff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#1b0063"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.25rem",
+            "gutter": "1.5rem",
+            "margin-sm": "1rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin": "2rem"
+          },
+          "fontFamily": {
+            "body-base": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "body-medium": ["Inter"],
+            "label-caps": ["Inter"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "data-tabular": ["Inter"],
+            "body-lg": ["Inter"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-base": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-card": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "badge-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(247, 241, 255, 0.4);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c9c4d8;
+      border-radius: 9999px;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.08); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F5FF] text-on-surface antialiased min-h-screen flex flex-col font-body-base text-body-base overflow-x-hidden selection:bg-primary-container selection:text-on-primary">
+<!-- ========================================================================= -->
+<!-- 1. FIXED LEFT SIDEBAR (Deep Plum #25203D via style_bg_color & JSON)       -->
+<!-- ========================================================================= -->
+<aside aria-label="Main Clinical Navigation" class="fixed top-0 left-0 h-screen w-72 flex flex-col justify-between bg-inverse-surface border-r border-outline-variant/20 shadow-lg z-40 text-on-primary">
+<div class="p-6 flex flex-col gap-6">
+<!-- Brand Logo Header -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-md">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-tight block">MediFlow AI</span>
+<span class="font-label-caps text-label-caps text-outline-variant tracking-wider uppercase">Regional Health Hub</span>
+</div>
+</div>
+<!-- AI CTA Pill -->
+<button class="w-full py-2.5 px-4 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-title-card text-title-card flex items-center justify-center gap-2 transition-transform duration-150 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Optimize Queue</span>
+</button>
+<!-- Main Navigation Cluster (Strict adherence to Shared Components JSON) -->
+<nav aria-label="Clinic Workflow Navigation" class="flex flex-col gap-1.5 mt-1">
+<!-- 1. Operations (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#operations">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Operations</span>
+</a>
+<!-- 2. Live Queue (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#queue">
+<span class="material-symbols-outlined text-xl" data-icon="queue">queue</span>
+<span>Live Queue</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+</a>
+<!-- 3. Appointments (ACTIVE - Electric Orchid highlight according to Semantic Mapping) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-primary text-on-primary font-body-medium text-body-medium shadow-sm" href="#appointments">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-semibold">Appointments</span>
+<span class="ml-auto text-label-caps font-label-caps bg-on-primary/20 px-2 py-0.5 rounded-full text-on-primary">Active Flow</span>
+</a>
+<!-- 4. Specialties (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#specialties">
+<span class="material-symbols-outlined text-xl" data-icon="medical_services">medical_services</span>
+<span>Specialties</span>
+</a>
+<!-- 5. AI Insights (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#insights">
+<span class="material-symbols-outlined text-xl" data-icon="auto_awesome">auto_awesome</span>
+<span>AI Insights</span>
+<span class="ml-auto text-xs bg-secondary-container/20 text-secondary-container px-1.5 py-0.5 rounded font-label-caps">v4.8</span>
+</a>
+<!-- 6. Staff Schedule (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#staff">
+<span class="material-symbols-outlined text-xl" data-icon="badge">badge</span>
+<span>Staff Schedule</span>
+</a>
+<!-- 7. Analytics (Inactive) -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#analytics">
+<span class="material-symbols-outlined text-xl" data-icon="monitoring">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Footer Cluster: Settings, Support & Dr. Sarah Lin Profile -->
+<div class="p-4 border-t border-outline-variant/20 flex flex-col gap-2">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#settings">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#support">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+<!-- Attending Profile Widget -->
+<div class="mt-2 pt-3 border-t border-outline-variant/10 flex items-center justify-between px-2">
+<div class="flex items-center gap-3">
+<img alt="Dr. Sarah Lin MD Chief Medical Officer" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary-container/40" data-alt="Close up professional portrait photograph of Dr Sarah Lin Chief Medical Officer in modern medical lab coat against calm neutral lavender studio lighting, high resolution editorial healthcare photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOur3K2fQxqxxnnNMXbbLXQCcPXklvT7jJwf2fGF1CnQUUVl7SCDpv4fI5QHOpw27f3TyH4MlviAfpnPkNC899hh1fHrx1RtUESUVzLstYbHGq5TpiHGI5kodLRmwHoMIgDJLC7yl2tGzNM6ECy5y500DrkqNghK7lm9jw5vrmGEUzsRKHTg_LEYMJd1JzzUxijd6sW6deuI2qmWUMOqEj8hiKcaiUreySdH_96nvYvf16kN-bwvfPBA"/>
+<div class="flex flex-col">
+<span class="font-body-medium text-body-medium text-on-primary font-semibold leading-tight">Dr. Sarah Lin, MD</span>
+<span class="font-label-caps text-label-caps text-outline-variant">Chief Medical Officer</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm cursor-pointer hover:text-on-primary" data-icon="tune">tune</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- 2. MAIN APP CANVAS CONTAINER (Shifted by w-72 for fixed sidebar)          -->
+<!-- ========================================================================= -->
+<div class="ml-72 flex-1 flex flex-col min-h-screen">
+<!-- Top Sticky Header Bar (From TopNavBar Blueprint) -->
+<header class="sticky top-0 z-30 w-full bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm px-8 py-3.5 flex items-center justify-between gap-6">
+<!-- Left: Breadcrumbs & Smart Search -->
+<div class="flex items-center gap-6 flex-1 max-w-2xl">
+<div class="hidden xl:flex flex-col">
+<div class="flex items-center gap-1.5 text-outline text-[11px] font-label-caps tracking-wider uppercase">
+<span>MEDIFLOW CORE</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">APPOINTMENTS &amp; SCHEDULING</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Dynamic Flow Booking</span>
+</div>
+<!-- Global Search Input with Focus Ring -->
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full bg-[#FFFFFF] border border-[#E8E3F3] rounded-xl pl-10 pr-4 py-2 text-on-surface font-body-base text-body-base placeholder:text-[#817C98] focus:border-primary-container focus:ring-4 focus:ring-primary-container/15 outline-none transition-all" placeholder="Search patient name, MRN, phone, or referring doctor..." type="text" value="Elena Vasquez (#MED-94021)"/>
+<div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 text-[11px] font-label-caps text-outline bg-surface-container-high px-1.5 py-0.5 rounded border border-outline-variant/40">
+<span>⌘</span><span>K</span>
+</div>
+</div>
+</div>
+<!-- Right: Live Sync Status, Emergency Quick-Action & Icons -->
+<div class="flex items-center gap-3">
+<!-- Live Sync Pill -->
+<div class="hidden lg:flex items-center gap-2 bg-[#F7F5FF] border border-[#E8E3F3] px-3 py-1.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#42D6C5] animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Live Clinic Sync: <strong class="text-on-surface">Active • 12ms</strong></span>
+</div>
+<!-- Secondary Action: Emergency Walk-In -->
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-badge-label text-badge-label hover:bg-tertiary-fixed-dim transition-colors active:scale-95 shadow-sm border border-tertiary/20">
+<span class="material-symbols-outlined text-base" data-icon="emergency">emergency</span>
+<span>Emergency Walk-In</span>
+</button>
+<!-- Notification & Actions Cluster -->
+<div class="flex items-center gap-1 pl-2 border-l border-outline-variant/30">
+<button aria-label="Notifications" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span>
+</button>
+<button aria-label="Clinic Room Tuning" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Clinic Room Tuning">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+<button aria-label="My Profile" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors" title="My Profile">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Workspace Canvas -->
+<main class="flex-1 p-8 space-y-6 max-w-[1720px] w-full mx-auto">
+<!-- ========================================================================= -->
+<!-- 3. BOOKING FLOW STEPPER / PROGRESS HEADER                                 -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 border border-[#E8E3F3] shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#E8E3F3]">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-badge-label text-badge-label flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#161f00]"></span>
+                AI Slot Recommendation Engine v4.8
+              </span>
+<span class="text-outline text-xs">• Regional Health Cardiology Center</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Specialty-Aware Appointment Booking &amp; Dynamic Flow Engine</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1">Simulate and schedule clinical appointments with AI wait-time prediction, doctor workload balancing, and instant standby slot allocation.</p>
+</div>
+<div class="flex items-center gap-2 self-start lg:self-center">
+<button class="px-4 py-2 rounded-xl bg-surface-container text-on-surface font-body-medium text-body-medium hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span>Past Bookings</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-surface-container text-on-surface font-body-medium text-body-medium hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg" data-icon="analytics">analytics</span>
+<span>Triage Heatmap</span>
+</button>
+</div>
+</div>
+<!-- 4-Stage Clinical Booking Stepper -->
+<nav aria-label="Booking Progress" class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+<!-- Step 1: Completed -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-[#F7F5FF] border border-[#E8E3F3]">
+<div class="w-8 h-8 rounded-full bg-[#42D6C5]/20 text-[#1CA091] flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-lg font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-[#1CA091] uppercase">Step 01 • Done</span>
+<span class="font-title-card text-title-card text-on-surface">Patient Identification</span>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-[#F7F5FF] border border-[#E8E3F3]">
+<div class="w-8 h-8 rounded-full bg-[#42D6C5]/20 text-[#1CA091] flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-lg font-bold" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-[#1CA091] uppercase">Step 02 • Done</span>
+<span class="font-title-card text-title-card text-on-surface">Specialty &amp; Routing</span>
+</div>
+</div>
+<!-- Step 3: ACTIVE (Electric Orchid) -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-primary-fixed/30 border-2 border-primary-container shadow-sm ring-2 ring-primary-container/10">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold shadow">
+<span class="font-badge-label text-badge-label">03</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary font-bold uppercase">Step 03 • In Progress</span>
+<span class="font-title-card text-title-card text-primary font-bold">Slot Selection &amp; Forecast</span>
+</div>
+</div>
+<!-- Step 4: Upcoming / Preview -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low/50 border border-[#E8E3F3]/60 opacity-80">
+<div class="w-8 h-8 rounded-full bg-outline-variant/30 text-outline flex items-center justify-center font-bold">
+<span class="font-badge-label text-badge-label">04</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase">Step 04 • Upcoming</span>
+<span class="font-title-card text-title-card text-on-surface-variant">Confirmation &amp; Pass</span>
+</div>
+</div>
+</nav>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. TWO-COLUMN MAIN WORKSPACE (65% Left / 35% Right)                       -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- ======================================================================= -->
+<!-- LEFT COLUMN: 65% width (Col 1-8 of 12)                                 -->
+<!-- ======================================================================= -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+<!-- Section 1: Patient Profile Banner -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-[#E8E3F3] shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)] flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-start md:items-center gap-4">
+<div class="relative">
+<img alt="Elena Vasquez" class="w-14 h-14 rounded-2xl object-cover ring-2 ring-primary-container/30 shadow-sm" data-alt="Editorial candid medical patient profile headshot portrait of Elena Vasquez in her early thirties wearing an everyday cardigan with soft lavender clinical bokeh background studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTxloTioe7E_v2UX7-FHqgPyZaIstdL2wLf2ElX5W0BdyIh8Q-gD0PLqG__4cSjMuASphxY6etAtd6GIT3_kocY6OBn9wMEEbh9G_o-EML-IPIQIeOIFdfeiGK1FlaFQc-v1gWB1Ay1TvyzLVLThJ7XcDVS2vC70XG62K0TSgJZOF1aDZP8s-lHciY29FSFAFmaB88N1j_P7T7-TWdeAaXOH_kLDxwpzMVSzUnjUrM17yxD_j1YJD03g"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#42D6C5] ring-2 ring-surface-container-lowest" title="Profile Verified"></span>
+</div>
+<div class="space-y-1">
+<div class="flex flex-wrap items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Elena Vasquez</h2>
+<span class="font-data-tabular text-data-tabular bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-medium">MRN: #MED-94021</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/70 text-on-secondary-fixed text-xs font-badge-label">Verified PPO</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-on-surface-variant text-body-sm font-body-sm">
+<span>Age: <strong class="text-on-surface">34 yrs</strong></span>
+<span>DOB: <strong class="text-on-surface">May 14, 1990</strong></span>
+<span>Insurance: <strong class="text-on-surface">Blue Cross PPO #BC-99124</strong></span>
+<span>Triage Risk: <strong class="text-[#1CA091]">Low (Score 0.12)</strong></span>
+<span>Historical Attendance: <strong class="text-primary font-semibold">98.4%</strong></span>
+</div>
+</div>
+</div>
+<button class="self-start md:self-center px-3.5 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-primary font-body-medium text-body-medium flex items-center gap-1.5 transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-base" data-icon="switch_account">switch_account</span>
+<span>Change Patient</span>
+</button>
+</div>
+<!-- Section 2: Clinical Specialty & Service Selector -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-[#E8E3F3] shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)] space-y-6">
+<!-- Specialty Filter Tabs -->
+<div>
+<label class="block font-label-caps text-label-caps text-outline uppercase tracking-wider mb-2.5">Target Clinical Specialty</label>
+<div class="flex flex-wrap gap-2">
+<!-- Pediatrics -->
+<button class="px-4 py-2 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-body-medium text-body-medium flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="child_care">child_care</span>
+<span>Pediatrics</span>
+</button>
+<!-- Cardiology (Selected) -->
+<button class="px-4 py-2 rounded-xl bg-primary text-on-primary font-body-medium text-body-medium flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-semibold">Cardiology</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</button>
+<!-- Dermatology -->
+<button class="px-4 py-2 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-body-medium text-body-medium flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="dermatology">dermatology</span>
+<span>Dermatology</span>
+</button>
+<!-- Orthopedics -->
+<button class="px-4 py-2 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-body-medium text-body-medium flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="orthopedics">orthopedics</span>
+<span>Orthopedics</span>
+</button>
+<!-- Ophthalmology -->
+<button class="px-4 py-2 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-body-medium text-body-medium flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+<span>Ophthalmology</span>
+</button>
+</div>
+</div>
+<!-- Visit Classification & AI Expected Duration Drift -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-[#E8E3F3]">
+<!-- Service Classification Card -->
+<div class="p-4 rounded-xl border border-primary-container/30 bg-primary-fixed/15 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-primary uppercase">Scheduled Procedure</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-xs font-badge-label">45 Min Base</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface">Post-Angioplasty Follow-up &amp; Echocardiogram</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Full 2D Doppler scan, stent patency evaluation, telemetry review.</p>
+</div>
+<div class="mt-3 pt-2 border-t border-primary-container/20 flex items-center gap-2 text-xs font-data-tabular">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-on-surface font-medium">AI Duration Forecast:</span>
+<span class="text-primary font-bold">42 – 48 min</span>
+<span class="text-outline text-[11px]">(+3m buffer recommended)</span>
+</div>
+</div>
+<!-- Attending Physician & Workload Balance -->
+<div class="p-4 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">Assigned Primary Physician</span>
+<span class="px-2 py-0.5 rounded-full bg-[#42D6C5]/20 text-[#1CA091] text-xs font-badge-label">78% Load (Optimal)</span>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Dr. Al-Mansoor" class="w-11 h-11 rounded-xl object-cover ring-1 ring-[#E8E3F3]" data-alt="Editorial portrait photograph of Dr Tariq Al Mansoor senior cardiologist wearing scrubs and laboratory white coat with gentle professional smile in clinical hospital suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfBW8Gf0vAyw327aWTptaZ9SNBFnppYXl5JgBqBvtbF6-IkjcNUbT4w3xT5q2hGP7bzoa9MHVp6w_KydYOWuGl5XHKmjM4dUK5hnqRJhEHPJxXp0KwB-Af32ZoT3n3caNPxinWS_DzfhvViGzU7o6_uQdQZOc2_SzkrsuCfvhYxUhG7ikjArQ819p1PZWBCDBoF-ccGt8mHPvsgzMkG__-uvcQMUruQPeu6gmZPxThLiupA5ZxM389kw"/>
+<div>
+<span class="font-title-card text-title-card text-on-surface block">Dr. Tariq Al-Mansoor, MD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cardiology Lead • Wing B Cath Lab 201</span>
+</div>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between pt-2 border-t border-[#E8E3F3]">
+<span class="text-xs text-on-surface-variant font-body-sm">Alternate: Dr. Elena Rostova (Available)</span>
+<button class="text-xs font-body-medium text-primary hover:underline">Change Doctor</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Interactive Date & AI-Optimized Slot Grid -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-[#E8E3F3] shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)] space-y-6">
+<!-- Week Calendar Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block">Scheduling Week</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span>October 23 – October 28, 2024</span>
+<span class="text-xs font-label-caps bg-surface-container px-2 py-0.5 rounded text-outline">Q4 Clinic Shift</span>
+</h3>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Previous Week" class="p-1.5 rounded-lg border border-[#E8E3F3] hover:bg-surface-container transition-colors" title="Previous Week">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_left">chevron_left</span>
+</button>
+<button aria-label="Next Week" class="p-1.5 rounded-lg border border-[#E8E3F3] hover:bg-surface-container transition-colors" title="Next Week">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Week Day Cards Selector -->
+<div class="grid grid-cols-6 gap-2.5">
+<!-- Mon Oct 23 -->
+<button class="p-3 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/40 text-center transition-all flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Mon</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">23</span>
+<span class="text-[11px] font-data-tabular text-on-surface-variant mt-1">6 slots</span>
+</button>
+<!-- Tue Oct 24 -->
+<button class="p-3 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/40 text-center transition-all flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Tue</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">24</span>
+<span class="text-[11px] font-data-tabular text-tertiary mt-1">Surge Peak</span>
+</button>
+<!-- Wed Oct 25 (ACTIVE SELECTED) -->
+<button class="p-3 rounded-xl bg-primary text-on-primary ring-4 ring-primary-container/20 text-center transition-all flex flex-col items-center shadow-md relative">
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase font-bold">Wed</span>
+<span class="font-headline-sm text-headline-sm text-on-primary mt-1 font-extrabold">25</span>
+<span class="text-[11px] font-data-tabular text-secondary-container mt-1 font-semibold flex items-center gap-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse"></span>
+                  AI Optimal
+                </span>
+<span class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-secondary-container rounded-full ring-2 ring-primary"></span>
+</button>
+<!-- Thu Oct 26 -->
+<button class="p-3 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/40 text-center transition-all flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Thu</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">26</span>
+<span class="text-[11px] font-data-tabular text-on-surface-variant mt-1">8 slots</span>
+</button>
+<!-- Fri Oct 27 -->
+<button class="p-3 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/40 text-center transition-all flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Fri</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1">27</span>
+<span class="text-[11px] font-data-tabular text-on-surface-variant mt-1">4 slots</span>
+</button>
+<!-- Sat Oct 28 -->
+<button class="p-3 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest/60 text-center transition-all flex flex-col items-center opacity-70">
+<span class="font-label-caps text-label-caps text-outline uppercase">Sat</span>
+<span class="font-headline-sm text-headline-sm text-outline mt-1">28</span>
+<span class="text-[11px] font-data-tabular text-outline mt-1">Half-Day</span>
+</button>
+</div>
+<!-- Time of Day Segment Filter -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5 bg-surface-container p-1 rounded-xl">
+<button class="px-3 py-1.5 rounded-lg text-xs font-body-medium text-on-surface-variant hover:text-on-surface">Morning (08:00 - 12:00)</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-xs font-body-medium text-primary font-bold shadow-sm">Afternoon (12:00 - 16:00)</button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-body-medium text-on-surface-variant hover:text-on-surface">Evening (16:00 - 19:00)</button>
+</div>
+<div class="text-xs text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>Timezone: EST (Regional Clinic Clock)</span>
+</div>
+</div>
+<!-- Dynamic Slot Grid with AI Wait Predictions -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 pt-2">
+<!-- Slot 1: 09:30 AM (AI Optimal) -->
+<div class="p-4 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/50 hover:shadow-md transition-all cursor-pointer relative group">
+<div class="flex items-start justify-between">
+<span class="font-title-card text-title-card text-on-surface">09:30 AM</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed text-[11px] font-badge-label flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="auto_awesome">auto_awesome</span>
+                    AI Optimal Slot
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Projected Wait:</span>
+<span class="text-[#1CA091] font-semibold">&lt; 4 mins</span>
+</div>
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Assigned Bay:</span>
+<span class="text-on-surface">Cath Bay 201</span>
+</div>
+</div>
+</div>
+<!-- Slot 2: 10:15 AM (Standard Pace) -->
+<div class="p-4 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/50 hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="font-title-card text-title-card text-on-surface">10:15 AM</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-primary text-[11px] font-badge-label">
+                    Standard Pace
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Projected Wait:</span>
+<span class="text-on-surface font-semibold">~8 mins</span>
+</div>
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Assigned Bay:</span>
+<span class="text-on-surface">Cath Bay 202</span>
+</div>
+</div>
+</div>
+<!-- Slot 3: 11:30 AM (Surge Warning / Solar Amber) -->
+<div class="p-4 rounded-xl border border-[#FFBF69]/40 bg-[#FFF8EB] hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="font-title-card text-title-card text-on-surface">11:30 AM</span>
+<span class="px-2 py-0.5 rounded-full bg-[#FFBF69]/30 text-[#C47C10] text-[11px] font-badge-label flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="warning">warning</span>
+                    Surge Warning
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-[#C47C10]">Projected Wait:</span>
+<span class="text-[#C47C10] font-bold">~22 mins</span>
+</div>
+<div class="text-[11px] text-on-surface-variant leading-tight">
+                    High overlap with Pediatric clinic turnover.
+                  </div>
+</div>
+</div>
+<!-- Slot 4: 02:00 PM (SELECTED - Electric Orchid Active) -->
+<div class="p-4 rounded-xl border-2 border-primary-container bg-primary-fixed/20 shadow-[0px_4px_14px_rgba(118,87,255,0.25)] relative ring-2 ring-primary-container/20">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary font-extrabold">02:00 PM</span>
+<span class="material-symbols-outlined text-primary text-base font-bold" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed text-[11px] font-badge-label font-bold">
+                    Zero Overlap
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-on-surface-variant font-medium">Projected Wait:</span>
+<span class="text-[#1CA091] font-bold text-sm">3.2 mins</span>
+</div>
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-on-surface-variant">Lab Suite:</span>
+<span class="text-on-surface font-semibold">Bay 201 Cath Lab</span>
+</div>
+</div>
+<!-- Selection Indicator Bar -->
+<div class="absolute left-0 bottom-0 top-0 w-1.5 bg-primary-container rounded-l-xl"></div>
+</div>
+<!-- Slot 5: 03:15 PM (Standby Fast-Track Eligible) -->
+<div class="p-4 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/50 hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="font-title-card text-title-card text-on-surface">03:15 PM</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-badge-label">
+                    Fast-Track Ready
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Projected Wait:</span>
+<span class="text-on-surface font-semibold">~6 mins</span>
+</div>
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Assigned Bay:</span>
+<span class="text-on-surface">Cath Bay 203</span>
+</div>
+</div>
+</div>
+<!-- Slot 6: 04:00 PM (Evening Low Traffic) -->
+<div class="p-4 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:border-primary-container/50 hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="font-title-card text-title-card text-on-surface">04:00 PM</span>
+<span class="px-2 py-0.5 rounded-full bg-[#42D6C5]/15 text-[#1CA091] text-[11px] font-badge-label">
+                    Low Traffic
+                  </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Projected Wait:</span>
+<span class="text-[#1CA091] font-semibold">&lt; 5 mins</span>
+</div>
+<div class="flex items-center justify-between text-xs font-data-tabular">
+<span class="text-outline">Assigned Bay:</span>
+<span class="text-on-surface">Cath Bay 201</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: AI Intelligent Triage & Predictive Overlap Warning Banner -->
+<div class="bg-inverse-surface rounded-2xl p-6 text-on-primary border border-secondary-container/30 shadow-lg relative overflow-hidden">
+<!-- Subtle Radial Gradient Light Accent -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-primary-container/30 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-fixed flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-2xl font-bold" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="text-secondary-container font-label-caps text-label-caps uppercase tracking-wider">AI Predictive Scheduling Advice</span>
+<span class="text-xs bg-on-primary/10 px-2 py-0.5 rounded-full text-inverse-on-surface font-data-tabular">Confidence: 99.4%</span>
+</div>
+<h4 class="font-title-card text-title-card text-on-primary">
+                  Optimal Slot Selection Confirmed: Avoids 11:30 AM Cath Lab Sterilization Backlog
+                </h4>
+<p class="font-body-base text-body-base text-outline-variant leading-relaxed">
+                  Booking Elena Vasquez at <strong class="text-secondary-container">02:00 PM on Wednesday</strong> avoids the predicted pediatric catheterization overflow. The autonomous model projects a <strong class="text-on-primary">99.4% on-time consultation rate</strong>, under 4 minutes waiting room duration, and zero physician cognitive fatigue penalty for Dr. Al-Mansoor.
+                </p>
+<div class="flex flex-wrap items-center gap-4 pt-2 text-xs font-data-tabular text-inverse-primary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                    Bay 201 Air Exchange Sanitized at 01:30 PM
+                  </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                    Nurse Practitioner Pre-Vitals Synced
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ======================================================================= -->
+<!-- RIGHT COLUMN: 35% width (Col 8-12 of 12) - STICKY CONFIRMATION & PASS -->
+<!-- ======================================================================= -->
+<div class="lg:col-span-5 xl:col-span-4 sticky top-24 space-y-6">
+<!-- Sticky Appointment Confirmation Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-[#E8E3F3] shadow-[0px_10px_30px_-4px_rgba(118,87,255,0.12)] space-y-6">
+<!-- Card Header -->
+<div class="flex items-center justify-between pb-4 border-b border-[#E8E3F3]">
+<div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Summary &amp; Token Preview</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Digital Clinic Pass</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#42D6C5]/20 text-[#1CA091] font-badge-label text-badge-label flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1CA091] animate-pulse"></span>
+                Ready to Confirm
+              </span>
+</div>
+<!-- Digital Pass / Token Graphic Preview -->
+<div class="rounded-2xl bg-gradient-to-br from-inverse-surface to-[#1c1734] text-on-primary p-5 shadow-lg border border-outline-variant/30 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-primary-container/20 blur-xl"></div>
+<div class="flex items-center justify-between border-b border-on-primary/10 pb-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-base" data-icon="local_hospital">local_hospital</span>
+</div>
+<span class="font-title-card text-title-card font-bold tracking-tight">MediFlow FastPass</span>
+</div>
+<span class="text-xs font-label-caps bg-secondary-container text-on-secondary-fixed px-2 py-0.5 rounded-full font-bold">NFC Check-In Active</span>
+</div>
+<!-- Main Token Code Callout -->
+<div class="py-4 text-center">
+<span class="text-outline-variant text-[11px] font-label-caps uppercase tracking-widest block">Allocated Priority Token</span>
+<span class="font-display-hero text-[38px] leading-tight font-extrabold text-secondary-container tracking-wider block my-0.5">#CRD-504</span>
+<span class="text-xs text-inverse-on-surface">Elena Vasquez • DOB 05/14/1990</span>
+</div>
+<!-- Pass Details Grid -->
+<div class="bg-on-primary/5 rounded-xl p-3 space-y-2 text-xs border border-on-primary/10 font-data-tabular">
+<div class="flex justify-between">
+<span class="text-outline-variant">Specialty Suite:</span>
+<span class="text-on-primary font-semibold">Cardiology • Bay 201 (Cath Lab B)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline-variant">Appointment Time:</span>
+<span class="text-secondary-container font-bold">Wed, Oct 25, 2024 @ 02:00 PM EST</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline-variant">Attending:</span>
+<span class="text-on-primary font-semibold">Dr. Tariq Al-Mansoor, MD</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline-variant">Clinic Arrival Window:</span>
+<span class="text-on-primary font-semibold">01:45 PM (15m prior for vitals)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline-variant">Projected Clinic Wait:</span>
+<span class="text-[#42D6C5] font-bold">~3.2 mins</span>
+</div>
+</div>
+<!-- Simulated Barcode & QR Code Indicator -->
+<div class="mt-4 pt-3 border-t border-on-primary/10 flex items-center justify-between">
+<div class="flex flex-col">
+<div class="h-6 flex items-center gap-0.5 opacity-70">
+<span class="w-1 h-6 bg-on-primary"></span>
+<span class="w-0.5 h-6 bg-on-primary"></span>
+<span class="w-1.5 h-6 bg-on-primary"></span>
+<span class="w-0.5 h-6 bg-on-primary"></span>
+<span class="w-2 h-6 bg-on-primary"></span>
+<span class="w-1 h-6 bg-on-primary"></span>
+<span class="w-0.5 h-6 bg-on-primary"></span>
+<span class="w-1.5 h-6 bg-on-primary"></span>
+<span class="w-2 h-6 bg-on-primary"></span>
+<span class="w-0.5 h-6 bg-on-primary"></span>
+<span class="w-1 h-6 bg-on-primary"></span>
+</div>
+<span class="text-[9px] font-data-tabular text-outline-variant mt-0.5">AUTH: 9940-2104-504</span>
+</div>
+<div class="flex items-center gap-1.5 text-xs text-inverse-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="qr_code_2">qr_code_2</span>
+<span>Auto-kiosk Ready</span>
+</div>
+</div>
+</div>
+<!-- Clinical Pre-Visit Requirements Checklist -->
+<div class="space-y-3 pt-2">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block">Pre-Encounter Protocols</span>
+<!-- Requirement 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low border border-[#E8E3F3]">
+<div class="flex items-center gap-2.5">
+<span class="w-5 h-5 rounded-md bg-[#42D6C5]/20 text-[#1CA091] flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check">check</span>
+</span>
+<span class="text-xs font-body-medium text-on-surface">Pre-encounter ECG Lab Report</span>
+</div>
+<span class="text-[11px] font-badge-label text-[#1CA091] font-bold">Uploaded</span>
+</div>
+<!-- Requirement 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low border border-[#E8E3F3]">
+<div class="flex items-center gap-2.5">
+<span class="w-5 h-5 rounded-md bg-[#42D6C5]/20 text-[#1CA091] flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check">check</span>
+</span>
+<span class="text-xs font-body-medium text-on-surface">Fasting 4h prior acknowledged</span>
+</div>
+<span class="text-[11px] font-badge-label text-[#1CA091] font-bold">Confirmed</span>
+</div>
+<!-- Interactive Toggle 1: SMS & Calendar -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low border border-[#E8E3F3]">
+<div class="flex flex-col">
+<span class="text-xs font-body-medium text-on-surface">SMS Confirmation &amp; Calendar Sync</span>
+<span class="text-[11px] text-on-surface-variant font-body-sm">Send iCal + reminder to +1 (555) 019-4822</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Interactive Toggle 2: Standby Fast-Track Auto-Bump -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-primary-fixed/20 border border-primary-container/30">
+<div class="flex flex-col pr-2">
+<div class="flex items-center gap-1">
+<span class="text-xs font-body-medium text-on-surface font-semibold">Standby Fast-Track Auto-Bump</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="bolt">bolt</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-body-sm">If slot opens earlier, auto-notify patient</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="space-y-2.5 pt-2">
+<!-- Primary Action: Electric Orchid with subtle glow -->
+<button class="w-full h-12 rounded-xl bg-primary-container hover:bg-[#6343F0] text-on-primary font-title-card text-title-card font-bold flex items-center justify-center gap-2 shadow-[0px_4px_14px_rgba(118,87,255,0.35)] transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-xl" data-icon="confirmation_number">confirmation_number</span>
+<span>Confirm Booking &amp; Issue Token #CRD-504</span>
+</button>
+<!-- Secondary Action: Simulate Scenarios -->
+<button class="w-full h-11 rounded-xl border border-[#E8E3F3] bg-surface-container-lowest hover:bg-surface-container text-on-surface font-body-medium text-body-medium flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="model_training">model_training</span>
+<span>Simulate Reschedule Scenarios</span>
+</button>
+<!-- Tertiary Action: Print / Desk Route -->
+<button class="w-full py-2 text-xs font-body-medium text-on-surface-variant hover:text-primary flex items-center justify-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="print">print</span>
+<span>Print Clinical Summary / Route to Intake Desk</span>
+</button>
+</div>
+</div>
+<!-- Physician On-Duty Schedule Snippet Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-[#E8E3F3] shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-title-card text-title-card text-on-surface">Cath Lab 201 Queue Status</span>
+<span class="text-xs font-label-caps text-[#1CA091] bg-[#42D6C5]/10 px-2 py-0.5 rounded-full">On Pace</span>
+</div>
+<div class="space-y-2 text-xs font-data-tabular">
+<div class="flex justify-between items-center py-1 border-b border-[#E8E3F3]/60">
+<span class="text-outline">01:00 PM – 01:45 PM:</span>
+<span class="text-on-surface">Arterial Ultrasound (Mr. Gomez)</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-[#E8E3F3]/60">
+<span class="text-outline">01:45 PM – 02:00 PM:</span>
+<span class="text-[#1CA091] font-semibold">15m Sterilization &amp; Prep Buffer</span>
+</div>
+<div class="flex justify-between items-center py-1 bg-primary-fixed/20 px-2 rounded font-semibold text-primary">
+<span>02:00 PM – 02:45 PM:</span>
+<span>Elena Vasquez (Pending Confirm)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- 5. BOTTOM FLOATING OPERATIONAL COMPLIANCE & STATUS BAR                     -->
+<!-- ========================================================================= -->
+<footer class="mt-auto border-t border-[#E8E3F3] bg-surface-container-lowest/90 backdrop-blur-md px-8 py-3 flex flex-col sm:flex-row items-center justify-between text-xs text-on-surface-variant gap-3 font-data-tabular">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-[#42D6C5]"></span>
+          MediFlow Autonomous Booking Engine v4.8
+        </span>
+<span class="text-outline">•</span>
+<span>Real-time clinic slot allocation</span>
+<span class="text-outline">•</span>
+<span class="bg-secondary-container/30 text-on-secondary-fixed px-2 py-0.5 rounded text-[11px] font-badge-label">Zero Drift Protocol Active</span>
+</div>
+<div class="flex items-center gap-4 text-[11px] text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+          HIPAA &amp; FHIR R4 Compliant
+        </span>
+<span>Clinic Node: US-EAST-CLINIC-09</span>
+<span class="text-on-surface font-semibold">Regional Health Hub</span>
+</div>
+</footer>
+</div>
+</body></html>

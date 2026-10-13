@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediFlow AI - Clinic Settings &amp; Alert Notification Center</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "outline": "#797587",
+            "inverse-on-surface": "#f4eeff",
+            "on-primary-fixed-variant": "#4612cf",
+            "primary": "#5d39e5",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#e6deff",
+            "error": "#ba1a1a",
+            "outline-variant": "#c9c4d8",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3b4d00",
+            "surface": "#fdf8ff",
+            "background": "#fdf8ff",
+            "inverse-surface": "#312c4a",
+            "on-surface": "#1c1734",
+            "tertiary-fixed": "#ffd9de",
+            "tertiary-container": "#ca4669",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#afd43e",
+            "tertiary-fixed-dim": "#ffb2bf",
+            "surface-container-low": "#f7f1ff",
+            "on-background": "#1c1734",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#484555",
+            "surface-variant": "#e6deff",
+            "on-tertiary-fixed": "#3f0015",
+            "secondary-fixed": "#caf158",
+            "surface-tint": "#5e3be7",
+            "on-primary-container": "#fffdff",
+            "on-secondary-fixed": "#161f00",
+            "surface-bright": "#fdf8ff",
+            "primary-fixed-dim": "#c9beff",
+            "surface-container-highest": "#e6deff",
+            "surface-container-high": "#ece4ff",
+            "surface-dim": "#ddd5fc",
+            "inverse-primary": "#c9beff",
+            "on-tertiary-fixed-variant": "#8b133b",
+            "on-tertiary-container": "#fffeff",
+            "secondary": "#506600",
+            "secondary-container": "#c7ee55",
+            "tertiary": "#a92d51",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#1b0063",
+            "surface-container": "#f1ebff",
+            "primary-container": "#7657ff",
+            "on-secondary-container": "#536b00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-sm": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin": "2rem",
+            "gutter-sm": "1rem"
+          },
+          "fontFamily": {
+            "body-base": ["Inter"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "data-tabular": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-medium": ["Inter"],
+            "label-caps": ["Inter"],
+            "title-card": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "badge-label": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-base": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "title-card": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "badge-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7F5FF;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c9c4d8;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #797587;
+    }
+
+    /* Ambient AI Shimmer */
+    @keyframes aiShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .ai-shimmer-border {
+      background: linear-gradient(90deg, rgba(215,255,100,0.1), rgba(215,255,100,0.9), rgba(118,87,255,0.8), rgba(215,255,100,0.1));
+      background-size: 200% 100%;
+      animation: aiShimmer 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-base min-h-screen flex antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- ========================================================================= -->
+<!-- SIDE NAVIGATION (From Shared Components JSON: SideNavBar)                 -->
+<!-- ========================================================================= -->
+<aside class="fixed top-0 left-0 h-screen w-72 flex flex-col justify-between bg-inverse-surface border-r border-outline-variant/20 shadow-lg py-6 px-4 z-40 select-none">
+<!-- Top Branding & Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-tight">MediFlow AI</span>
+<span class="font-label-caps text-label-caps text-outline-variant tracking-wider">Regional Health Hub</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-headline-sm text-body-medium font-semibold shadow-sm hover:scale-[1.01] transition-transform duration-150">
+<span class="material-symbols-outlined text-lg" data-icon="auto_awesome" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Optimize Queue</span>
+</button>
+<!-- Main Navigation Menu -->
+<nav class="flex flex-col gap-1 mt-1">
+<div class="px-3 pb-1 text-label-caps font-label-caps text-outline-variant/70 uppercase">Clinical Operations</div>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Operations</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="queue">queue</span>
+<span class="flex-1">Live Queue</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">14</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_today">calendar_today</span>
+<span>Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="medical_services">medical_services</span>
+<span>Specialties</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="auto_awesome">auto_awesome</span>
+<span>AI Insights</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="badge">badge</span>
+<span>Staff Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="monitoring">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Footer Navigation (Settings ACTIVE per user page intent) -->
+<div class="flex flex-col gap-3 pt-4 border-t border-outline-variant/10">
+<div class="px-3 text-label-caps font-label-caps text-outline-variant/70 uppercase">Administration</div>
+<!-- Active Settings Tab -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-primary text-on-primary font-body-medium text-body-medium shadow-sm relative" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="flex-1 font-semibold">Settings</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_#c7ee55]"></span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<!-- CMO Profile Card -->
+<div class="mt-2 p-2.5 rounded-xl bg-surface-container-highest/10 border border-outline-variant/15 flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover ring-2 ring-primary-container/40" data-alt="Professional studio portrait of Dr Sarah Lin, Chief Medical Officer, wearing medical attire in a modern clinic with ambient lavender and violet background tones, clear soft key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp0oxK2YBLBvNySi3LdBvbSUkDMxB0lAuCb5gwRc94Jl2tqy9CWI6VyhF_ntShezeLSu0IpSYOojEU8xhd0NWZyy4Tues1kheLkMlIVnuLKvZwmIMk-anIB9nxutxPh9WeDTK_ehd-s6ItowndmyZkFBim-YdKMD9dVA9iaB_zWMXQWaFTNJLNFVv8AU4UOH3PkHTTQlJenXN-FAvPAQhSjO5B0WyvoArjU2k85yaPMqEeMBDdaBeNEw"/>
+<div class="flex flex-col min-w-0">
+<span class="text-body-sm font-body-sm font-semibold text-on-primary truncate">Dr. Sarah Lin MD</span>
+<span class="text-[11px] font-label-caps text-outline-variant truncate">Chief Medical Officer</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN APPLICATION CANVAS (Offset for desktop 72w / 288px sidebar)          -->
+<!-- ========================================================================= -->
+<div class="flex-1 ml-72 min-h-screen flex flex-col bg-background">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-30 w-full bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 flex justify-between items-center h-18 px-8 py-3.5 shadow-sm">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-11 pr-4 py-2 bg-surface-container-low border border-outline-variant/40 rounded-xl text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent transition-all" placeholder="Search settings, webhook keys, or alert policies..." type="text"/>
+</div>
+</div>
+<!-- Trailing Status & Actions -->
+<div class="flex items-center gap-4">
+<!-- Live FHIR / EHR Bridge Pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-[#1CA091]"></span>
+</span>
+<span class="text-data-tabular font-data-tabular text-on-surface-variant font-medium">EHR Bridge: Synced (Epic &amp; Cerner HL7/FHIR) • <strong class="text-on-surface font-semibold">14ms</strong></span>
+</div>
+<button class="px-4 py-2 rounded-xl border border-outline-variant/60 hover:bg-surface-container-high text-on-surface font-headline-sm text-body-medium font-semibold transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg" data-icon="policy">policy</span>
+<span>Audit Security Log</span>
+</button>
+<button class="px-5 py-2 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-body-medium font-semibold shadow-md shadow-primary/20 hover:shadow-lg transition-all flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="save">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</header>
+<!-- CONTENT BODY CONTAINER -->
+<main class="flex-1 p-8 max-w-[1600px] w-full mx-auto flex flex-col gap-6">
+<!-- Breadcrumbs & Screen Header -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-label-caps font-label-caps text-primary tracking-widest uppercase">
+<span>MEDIFLOW CORE</span>
+<span class="text-outline-variant font-normal">&gt;</span>
+<span>CLINICAL GOVERNANCE &amp; CONFIGURATION</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Clinic Settings &amp; Alert Notification Center</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-0.5">Manage real-time paging channels, AI autonomous thresholds, EHR integration pipelines, and department-level surge triggers.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">Active Clinic Zone:</span>
+<span class="px-3 py-1 rounded-lg bg-surface-container-high font-badge-label text-badge-label text-on-surface font-bold border border-outline-variant/30">Metro Regional Campus (Bay 101–310)</span>
+</div>
+</div>
+</div>
+<!-- Settings Sub-Navigation Tabs Bar -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+<div class="flex items-center gap-2 overflow-x-auto">
+<!-- Active Tab 1 -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-container text-on-primary font-badge-label text-badge-label shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="notifications_active">notifications_active</span>
+<span>Alerts &amp; Paging Channels</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-badge-label text-badge-label transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="auto_awesome">auto_awesome</span>
+<span>AI Autonomous Thresholds</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-badge-label text-badge-label transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="cable">cable</span>
+<span>EHR &amp; FHIR Interoperability</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-badge-label text-badge-label transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="meeting_room">meeting_room</span>
+<span>Clinic Bays &amp; Operating Hours</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-badge-label text-badge-label transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Role Permissions &amp; Access</span>
+</button>
+</div>
+<div class="text-body-sm font-body-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-secondary-container fill-1" data-icon="verified_user">verified_user</span>
+<span>HIPAA Compliance Level: Tier 4 Validated</span>
+</div>
+</div>
+<!-- ===================================================================== -->
+<!-- 2-COLUMN MAIN ARCHITECTURE                                            -->
+<!-- Left: ~65% (Settings Configuration) | Right: ~35% (Live Dispatch Feed)-->
+<!-- ===================================================================== -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- =================================================================== -->
+<!-- LEFT COLUMN: MAIN CONFIGURATION (8 of 12 cols = 66.6%)              -->
+<!-- =================================================================== -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+<!-- SECTION 1: Real-Time Clinic Alert Rules -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-6 shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 mb-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="alarm">alarm</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card text-on-surface">Real-Time Clinic Alert Rules &amp; Escalation Policies</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automated clinical surge warnings, physician fatigue guards, and equipment turnaround alerts.</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg border border-primary-container text-primary-container font-badge-label text-badge-label hover:bg-surface-container-high transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span>Add Custom Rule</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- ALERT ITEM 1: Pediatric & Acute Surge Alert -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/40 relative overflow-hidden transition-all hover:border-primary-container/40">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary-container"></div>
+<div class="flex items-start justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-title-card text-title-card text-on-surface">Pediatric &amp; Acute Surge Alert</span>
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[11px] bg-tertiary-fixed text-on-tertiary-fixed font-bold">Priority Code 1</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+                      Triggers immediately when waiting queue exceeds <strong class="text-on-surface font-semibold">4 patients</strong> or estimated intake wait exceeds <strong class="text-on-surface font-semibold">18 minutes</strong>.
+                    </p>
+<!-- Delivery Channels & Audio Selector -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-outline-variant/20">
+<div class="flex flex-wrap items-center gap-2">
+<span class="text-[11px] font-label-caps text-outline uppercase">Active Channels:</span>
+<label class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4" type="checkbox"/>
+<span>SMS On-Duty Floater</span>
+</label>
+<label class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4" type="checkbox"/>
+<span>Push CMO</span>
+</label>
+<label class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container w-4 h-4" type="checkbox"/>
+<span>Vocera Chime</span>
+</label>
+</div>
+<div class="flex items-center justify-end gap-2">
+<span class="text-[11px] font-label-caps text-outline uppercase">Acoustic Tone:</span>
+<select class="py-1 px-2.5 rounded-lg border border-outline-variant/40 bg-surface-container-lowest text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary">
+<option selected="">Urgent Siren (Double Pulse)</option>
+<option>Soft Chime v2 (High Harmonic)</option>
+<option>Hospital Priority Alpha</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Toggle switch -->
+<div class="flex flex-col items-end gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="text-[11px] font-label-caps text-primary font-bold">ARMED</span>
+</div>
+</div>
+</div>
+<!-- ALERT ITEM 2: Physician Fatigue Threshold Alert -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/40 relative overflow-hidden transition-all hover:border-primary-container/40">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary-container"></div>
+<div class="flex items-start justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-title-card text-title-card text-on-surface">Physician Fatigue Threshold Alert</span>
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[11px] bg-tertiary-container text-on-tertiary-container font-bold">High Priority</span>
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[11px] bg-surface-container-high text-on-surface font-semibold">AI Autonomous Watch</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">
+                      Triggers when consecutive clinical exams exceed <strong class="text-on-surface font-semibold">5.5 hours</strong> or biometric strain score &gt; <strong class="text-on-surface font-semibold">85%</strong>. Autonomously recommends Floater Swap protocol.
+                    </p>
+<div class="flex flex-wrap items-center gap-4 pt-2 border-t border-outline-variant/20 text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="text-outline">Escalation path:</span>
+<span class="font-medium text-on-surface">Clinical Director → Shift Scheduler</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-outline">Action:</span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[12px] font-semibold">Auto-Draft Swap Request</span>
+</div>
+</div>
+</div>
+<!-- Toggle switch -->
+<div class="flex flex-col items-end gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="text-[11px] font-label-caps text-primary font-bold">ARMED</span>
+</div>
+</div>
+</div>
+<!-- ALERT ITEM 3: Cath Lab & Sterilization Backlog -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/40 relative overflow-hidden transition-all hover:border-primary-container/40">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#C47C10]"></div>
+<div class="flex items-start justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-title-card text-title-card text-on-surface">Cath Lab &amp; Sterilization Backlog</span>
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[11px] bg-[#FFF2DE] text-[#C47C10] font-bold">Operational Delay</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">
+                      Predictive alert for surgical tool sterilization delays exceeding <strong class="text-on-surface font-semibold">12 minutes</strong> past post-op turnover schedule.
+                    </p>
+<div class="flex items-center gap-3 text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary" data-icon="sms">sms</span> SMS to Sanitation Lead</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary" data-icon="desktop_windows">desktop_windows</span> Workstation Pop-up (Bays 201-208)</span>
+</div>
+</div>
+<!-- Toggle switch -->
+<div class="flex flex-col items-end gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="text-[11px] font-label-caps text-primary font-bold">ARMED</span>
+</div>
+</div>
+</div>
+<!-- ALERT ITEM 4: Patient Standby Auto-Call -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/40 relative overflow-hidden transition-all hover:border-primary-container/40">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#1CA091]"></div>
+<div class="flex items-start justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-title-card text-title-card text-on-surface">Patient Standby Auto-Call</span>
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[11px] bg-[#E2F9F5] text-[#1CA091] font-bold">Optimization</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Auto-pings standby patients via SMS <strong class="text-on-surface font-semibold">20 minutes</strong> prior to predicted slot vacancy when primary patient is flagged 15m+ delayed.
+                    </p>
+</div>
+<!-- Toggle switch -->
+<div class="flex flex-col items-end gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="text-[11px] font-label-caps text-primary font-bold">ARMED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: AI Automation & Autonomy Controls (Luminous Editorial Card) -->
+<div class="relative rounded-2xl bg-inverse-surface text-inverse-on-surface p-6 shadow-xl overflow-hidden border border-secondary-container/30">
+<!-- Ambient glowing rim header line -->
+<div class="absolute top-0 left-0 right-0 h-1.5 ai-shimmer-border"></div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 mb-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-lg shadow-secondary-container/20">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card text-on-primary">AI Automation &amp; Autonomy Controls (Clinical Governance)</h2>
+<p class="font-body-sm text-body-sm text-outline-variant">Adjust autonomy bounds for live queue rerouting, patient dispatch, and triage escalation.</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-secondary-fixed text-label-caps font-label-caps border border-secondary-fixed/30 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+                ACTIVE AUTOPILOT
+              </span>
+</div>
+<!-- Governance Level Selector Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+<!-- Tier 1 -->
+<div class="p-3.5 rounded-xl border border-outline-variant/20 bg-surface-container-highest/5 hover:bg-surface-container-highest/10 cursor-pointer transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-title-card text-body-medium font-semibold text-outline-variant">Strict MD Approval</span>
+<input class="text-primary-container" name="gov-level" type="radio"/>
+</div>
+<p class="text-[12px] text-outline-variant/80">Every queue shift or room re-assignment requires manual clinician sign-off.</p>
+</div>
+<!-- Tier 2 (CURRENT SELECTED) -->
+<div class="p-3.5 rounded-xl border-2 border-secondary-container bg-primary-container/15 relative cursor-pointer shadow-[0_0_20px_rgba(215,255,100,0.15)]">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-title-card text-body-medium font-bold text-on-primary flex items-center gap-1">
+<span>Semi-Autonomous</span>
+<span class="material-symbols-outlined text-sm text-secondary-container fill-1" data-icon="check_circle">check_circle</span>
+</span>
+<input checked="" class="text-secondary-container focus:ring-secondary-container" name="gov-level" type="radio"/>
+</div>
+<p class="text-[12px] text-inverse-on-surface">Low-risk auto routing active. Re-orders standby slots, flags sanitization teams directly.</p>
+</div>
+<!-- Tier 3 -->
+<div class="p-3.5 rounded-xl border border-outline-variant/20 bg-surface-container-highest/5 hover:bg-surface-container-highest/10 cursor-pointer transition-all opacity-75">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-title-card text-body-medium font-semibold text-outline-variant">Full Autopilot</span>
+<input class="text-primary-container" disabled="" name="gov-level" type="radio"/>
+</div>
+<p class="text-[12px] text-outline-variant/80">Simulations only. Production blocked by Hospital Bylaw §14.8 until board sign-off.</p>
+</div>
+</div>
+<!-- Clarifying Disclaimer Banner -->
+<div class="p-3 rounded-xl bg-surface-container-highest/10 border border-outline-variant/15 flex items-center gap-3 text-body-sm font-body-sm text-inverse-on-surface mb-6">
+<span class="material-symbols-outlined text-secondary-container text-xl" data-icon="info">info</span>
+<span>Allows AI to auto-route standby patients and schedule sanitation crews; doctor reallocations still require 1-click MD confirmation.</span>
+</div>
+<!-- Interactive Sliders -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-outline-variant/15">
+<!-- Slider 1 -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-medium text-body-medium text-on-primary">AI Confidence Threshold</span>
+<span class="font-badge-label text-headline-sm text-secondary-container font-extrabold">92%</span>
+</div>
+<input class="w-full accent-secondary-container h-2 bg-surface-container-highest/20 rounded-lg cursor-pointer" max="99" min="70" type="range" value="92"/>
+<span class="text-[11px] font-body-sm text-outline-variant mt-1.5 block">Actions computed below 92% confidence require direct Head Nurse triage review.</span>
+</div>
+<!-- Slider 2 -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-medium text-body-medium text-on-primary">Re-balance Cooldown Interval</span>
+<span class="font-badge-label text-headline-sm text-secondary-container font-extrabold">15 min</span>
+</div>
+<input class="w-full accent-secondary-container h-2 bg-surface-container-highest/20 rounded-lg cursor-pointer" max="60" min="5" type="range" value="15"/>
+<span class="text-[11px] font-body-sm text-outline-variant mt-1.5 block">Min duration between algorithmic queue recalculations to avoid staff disorientation.</span>
+</div>
+</div>
+</div>
+<!-- SECTION 3: Notification Delivery Channels & Hardware Integrations -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-6 shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 mb-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="hub">hub</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card text-on-surface">Notification Delivery Channels &amp; Integrations</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage clinical IoT badges, hospital overhead PA, SMS gateways, and EHR in-baskets.</p>
+</div>
+</div>
+<span class="text-data-tabular font-data-tabular text-body-sm text-outline">4 Active Pipelines</span>
+</div>
+<!-- Grid of 4 Integration Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Channel 1: Vocera -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/30 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="badge">badge</span>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Vocera Clinical Badges</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#1CA091]"></span>
+<span class="text-[12px] font-data-tabular text-on-surface-variant">Connected • Latency 42ms</span>
+</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Channel 2: EHR In-Basket -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/30 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="sync_alt">sync_alt</span>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Epic / Cerner In-Basket</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#1CA091]"></span>
+<span class="text-[12px] font-data-tabular text-on-surface-variant">Connected • HL7 Live</span>
+</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Channel 3: Twilio SMS -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/30 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="textsms">textsms</span>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Twilio Patient Gateway</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#1CA091]"></span>
+<span class="text-[12px] font-data-tabular text-on-surface-variant">Operational • 99.98% SLA</span>
+</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Channel 4: Overcom PA Audio -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface-container-low/30 flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="volume_up">volume_up</span>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Doorway PA Overcom</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="text-[12px] font-data-tabular text-on-surface-variant">Active in 14 Bays • 65dB</span>
+</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================================== -->
+<!-- RIGHT COLUMN: TELEMETRY & LIVE DISPATCH STREAM (4 of 12 cols = 33%)-->
+<!-- =================================================================== -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- CARD 1: Live Alert Dispatch Stream -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="sensors">sensors</span>
+<h3 class="font-title-card text-title-card text-on-surface">Live Alert Dispatch Stream</h3>
+</div>
+<span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container text-body-sm font-data-tabular text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+                Past 60m
+              </span>
+</div>
+<!-- Filter pills -->
+<div class="flex items-center gap-1.5 pb-3 border-b border-outline-variant/20 mb-4 overflow-x-auto">
+<button class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-badge-label text-[11px]">All (18)</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant font-badge-label text-[11px]">Urgent (3)</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant font-badge-label text-[11px]">AI Actions (8)</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant font-badge-label text-[11px]">Failures (0)</button>
+</div>
+<!-- Feed Items Stack -->
+<div class="flex flex-col gap-3">
+<!-- Feed 1: Urgent Pediatric -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-1.5 hover:border-tertiary-container transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[10px] bg-tertiary-fixed text-on-tertiary-fixed font-bold">URGENT</span>
+<span class="font-title-card text-body-sm font-bold text-on-surface">Pediatric Surge Warning</span>
+</div>
+<span class="text-data-tabular font-data-tabular text-[11px] text-outline">2m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">+14m wait breach in Bay 101. Dispatched to Dr. Vance (Floater), CMO Sarah Lin.</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/15 text-[11px]">
+<span class="font-data-tabular text-outline">Channel: Vocera + SMS</span>
+<span class="font-bold text-[#1CA091] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                    Acknowledged
+                  </span>
+</div>
+</div>
+<!-- Feed 2: Automation Standby Token -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-1.5 hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[10px] bg-secondary-container text-on-secondary-container font-bold">AI ACTION</span>
+<span class="font-title-card text-body-sm font-bold text-on-surface">Standby Pre-warm #STB-014</span>
+</div>
+<span class="text-data-tabular font-data-tabular text-[11px] text-outline">14m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Slot pre-warmed for Cath Bay 202. Notification delivered to standby patient via SMS gateway.</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/15 text-[11px]">
+<span class="font-data-tabular text-outline">Channel: Twilio SMS Gateway</span>
+<span class="font-bold text-[#1CA091] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="done_all">done_all</span>
+                    Delivered
+                  </span>
+</div>
+</div>
+<!-- Feed 3: Staff Warning Fatigue -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-1.5 hover:border-tertiary-container transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[10px] bg-tertiary-container text-on-tertiary-container font-bold">STAFF ALERT</span>
+<span class="font-title-card text-body-sm font-bold text-on-surface">Dr. Chen Fatigue Score 94%</span>
+</div>
+<span class="text-data-tabular font-data-tabular text-[11px] text-outline">28m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Floater swap drafted to Shift Lead Desk. Exceeded 5.5 consecutive procedural hours.</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/15 text-[11px]">
+<span class="font-data-tabular text-outline">Channel: Epic In-Basket</span>
+<span class="font-bold text-[#C47C10] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="hourglass_top">hourglass_top</span>
+                    Pending Action
+                  </span>
+</div>
+</div>
+<!-- Feed 4: Room Ready Dermatology -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full font-badge-label text-[10px] bg-[#E2F9F5] text-[#1CA091] font-bold">SANITATION</span>
+<span class="font-title-card text-body-sm font-bold text-on-surface">Bay 301 Sterilized</span>
+</div>
+<span class="text-data-tabular font-data-tabular text-[11px] text-outline">42m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Dermatology Bay 301 turnover cleared. Intake desk notified; next patient summoned.</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/15 text-[11px]">
+<span class="font-data-tabular text-outline">Channel: PA Chime + Desk UI</span>
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="task_alt">task_alt</span>
+                    Auto-Resolved
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 2: Notification Sound & Broadcast Preview -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="graphic_eq">graphic_eq</span>
+<h3 class="font-title-card text-title-card text-on-surface">Acoustic &amp; PA Preview</h3>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase">Master 70%</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4">Simulate PA annunciators across active clinic speakers without triggering emergency sirens.</p>
+<div class="grid grid-cols-1 gap-2 mb-4">
+<button class="w-full flex items-center justify-between p-2.5 rounded-xl border border-outline-variant/30 hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="play_arrow">play_arrow</span>
+</div>
+<div>
+<span class="font-title-card text-body-sm font-semibold text-on-surface block">Chime (Doorway Ambient)</span>
+<span class="text-[11px] text-outline">520Hz Soft Bell • 1.2s duration</span>
+</div>
+</div>
+<span class="text-[11px] font-badge-label text-primary font-bold">Test</span>
+</button>
+<button class="w-full flex items-center justify-between p-2.5 rounded-xl border border-outline-variant/30 hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="play_arrow">play_arrow</span>
+</div>
+<div>
+<span class="font-title-card text-body-sm font-semibold text-on-surface block">Code Yellow (Surge Tone)</span>
+<span class="text-[11px] text-outline">Dual Staccato • 85dB cap</span>
+</div>
+</div>
+<span class="text-[11px] font-badge-label text-tertiary font-bold">Test</span>
+</button>
+<button class="w-full flex items-center justify-between p-2.5 rounded-xl border border-outline-variant/30 hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="play_arrow">play_arrow</span>
+</div>
+<div>
+<span class="font-title-card text-body-sm font-semibold text-on-surface block">Shift Handover Bell</span>
+<span class="text-[11px] text-outline">Harmonic Triple Gong</span>
+</div>
+</div>
+<span class="text-[11px] font-badge-label text-primary font-bold">Test</span>
+</button>
+</div>
+<!-- Quiet hours setting block -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="bedtime">bedtime</span>
+<div>
+<span class="font-title-card text-body-sm font-semibold text-on-surface block">Clinic Quiet Hours</span>
+<span class="text-[11px] font-data-tabular text-on-surface-variant">20:00 – 07:00 (Mutes Non-Urgent)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-badge-label text-[11px] bg-secondary-fixed text-on-secondary-fixed font-bold">SCHEDULED</span>
+</div>
+</div>
+<!-- CARD 3: HIPAA & Audit Trail Summary -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-5 shadow-[0px_4px_20px_-2px_rgba(118,87,255,0.05)]">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="security">security</span>
+<h3 class="font-title-card text-title-card text-on-surface">HIPAA &amp; Audit Trail</h3>
+</div>
+<span class="material-symbols-outlined text-[#1CA091]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="flex flex-col gap-2.5 text-body-sm font-body-sm text-on-surface-variant mb-4">
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/15">
+<span>Encryption standard:</span>
+<span class="font-data-tabular font-semibold text-on-surface">256-Bit TLS In-Transit &amp; At-Rest</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/15">
+<span>Audit retention:</span>
+<span class="font-data-tabular font-semibold text-on-surface">7 Years (Immutable Ledger)</span>
+</div>
+<div class="flex items-start justify-between py-1">
+<span>Last config mutation:</span>
+<span class="font-data-tabular text-right text-on-surface text-[12px]">
+<strong>Today, 09:14 AM</strong><br/>
+<span class="text-outline">Dr. Sarah Lin (NPI #9182371)</span>
+</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-xl border border-outline-variant/60 hover:bg-surface-container-high text-on-surface font-headline-sm text-body-medium font-semibold transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+<span>Export Full Audit Ledger (.CSV)</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- FOOTER TELEMETRY STRIP (Enterprise Status Strip)                         -->
+<!-- ========================================================================= -->
+<footer class="mt-auto w-full bg-inverse-surface text-outline-variant border-t border-outline-variant/20 px-8 py-3 flex flex-wrap items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="text-on-primary font-medium text-[13px]">MediFlow AI Autonomous Cluster: ONLINE</span>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<span>Regional Latency:</span>
+<span class="text-data-tabular font-data-tabular text-on-primary font-semibold">12.4ms</span>
+</div>
+<div class="hidden lg:flex items-center gap-2">
+<span>Active Patient Queue:</span>
+<span class="text-data-tabular font-data-tabular text-secondary-fixed font-semibold">48 Patients across 14 Bays</span>
+</div>
+</div>
+<div class="flex items-center gap-5 text-[12px]">
+<span>HL7/FHIR v4.0.1</span>
+<span>Build 2.8.44-PROD</span>
+<span class="text-on-primary font-semibold">© 2025 MediFlow Health Systems Inc.</span>
+</div>
+</footer>
+</div>
+</body></html>

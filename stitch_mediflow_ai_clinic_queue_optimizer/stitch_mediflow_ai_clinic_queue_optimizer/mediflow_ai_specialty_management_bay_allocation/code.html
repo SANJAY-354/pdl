@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediFlow AI — Specialty Management &amp; Bay Allocation</title>
+<!-- Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with CDN plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f4eeff",
+            "on-primary-fixed": "#1b0063",
+            "outline-variant": "#c9c4d8",
+            "on-tertiary-container": "#fffeff",
+            "surface-bright": "#fdf8ff",
+            "surface-container-high": "#ece4ff",
+            "surface-dim": "#ddd5fc",
+            "background": "#fdf8ff",
+            "surface-container-highest": "#e6deff",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#312c4a",
+            "on-tertiary-fixed": "#3f0015",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#caf158",
+            "primary-container": "#7657ff",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#536b00",
+            "surface": "#fdf8ff",
+            "on-tertiary-fixed-variant": "#8b133b",
+            "on-surface": "#1c1734",
+            "on-error": "#ffffff",
+            "outline": "#797587",
+            "primary": "#5d39e5",
+            "surface-container": "#f1ebff",
+            "secondary-fixed-dim": "#afd43e",
+            "on-primary-container": "#fffdff",
+            "tertiary-container": "#ca4669",
+            "surface-tint": "#5e3be7",
+            "on-surface-variant": "#484555",
+            "tertiary": "#a92d51",
+            "on-primary-fixed-variant": "#4612cf",
+            "secondary-container": "#c7ee55",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#c9beff",
+            "primary-fixed": "#e6deff",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f7f1ff",
+            "tertiary-fixed-dim": "#ffb2bf",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e6deff",
+            "secondary": "#506600",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#ffd9de",
+            "on-secondary-fixed-variant": "#3b4d00",
+            "on-background": "#1c1734",
+            "on-secondary-fixed": "#161f00",
+            "primary-fixed-dim": "#c9beff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1.125rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin-sm": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "space-xl": "2.25rem"
+          },
+          "fontFamily": {
+            "body-base": ["Inter"],
+            "data-tabular": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "label-caps": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-medium": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-base": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "badge-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "title-card": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+    .live-pulse {
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-base text-on-surface antialiased min-h-screen flex selection:bg-primary selection:text-on-primary">
+<!-- ==================== LEFT FIXED SIDEBAR ==================== -->
+<aside class="fixed top-0 left-0 h-screen w-72 flex flex-col justify-between bg-inverse-surface border-r border-outline-variant/20 shadow-lg z-40 py-6 px-4">
+<!-- Top Brand & AI Action -->
+<div class="space-y-6">
+<!-- Clinic Brand Header -->
+<div class="flex items-center gap-3.5 px-2">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary shadow-md">
+<span class="material-symbols-outlined text-2xl font-bold">medical_services</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-inverse-on-surface tracking-tight">MediFlow AI</div>
+<div class="font-label-caps text-label-caps text-outline-variant font-semibold">Regional Health Hub</div>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-secondary-container text-on-secondary-fixed font-title-card text-title-card hover:brightness-105 active:scale-98 transition duration-150 shadow-sm group">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span>Optimize Queue</span>
+</span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded-full bg-inverse-surface text-secondary-fixed flex items-center gap-1.5 font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed live-pulse"></span>
+          AI LIVE
+        </span>
+</button>
+<!-- Main Navigation Menu -->
+<nav class="space-y-1">
+<!-- Operations -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Operations</span>
+</a>
+<!-- Live Queue -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">queue</span>
+<span>Live Queue</span>
+</a>
+<!-- Appointments -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">calendar_today</span>
+<span>Appointments</span>
+</a>
+<!-- Specialties (ACTIVE - Electric Orchid Background) -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-primary-container text-on-primary font-body-medium text-body-medium shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl material-symbols-fill">medical_services</span>
+<span class="font-semibold">Specialties</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed shadow-sm"></span>
+</a>
+<!-- AI Insights -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span>AI Insights</span>
+</a>
+<!-- Staff Schedule -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">badge</span>
+<span>Staff Schedule</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Footer Links & Profile Badge -->
+<div class="space-y-4 pt-4 border-t border-outline-variant/20">
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3.5 py-2 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+<!-- Dr. Sarah Lin MD Profile Card -->
+<div class="flex items-center gap-3 p-2.5 rounded-xl bg-inverse-surface/80 border border-outline-variant/15">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-secondary-fixed shadow-sm" data-alt="Dr. Sarah Lin MD Chief Medical Officer professional studio headshot wearing white medical coat with stethoscope, soft hospital bokeh background in gentle lavender tones, friendly confident medical executive expression, ultra high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdvR3nR7TqbM6olaxxf3BwrwEXNiefJ01xpz6k6S714S9dKwLQgffvLJ6xPh_lzk9aBmcwxdAAQEG5Y7SwtyW_DG7vO6ajOtR7zxRhs4vTceOGJz9npb0WvSPV5BNr3b3YI9ruuXp2bEogrQ8Kge4YLMg4AM0bpJbN9oqyOKlEPPnMPKizYtkBDHJpyv4Bcl0ejrN-hVDJtpoHcPo-jBM29nNpFMtJDELTbKLAs5lrpi0lxbFXQfUbKQ"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-secondary-fixed border-2 border-inverse-surface"></span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-title-card text-title-card text-inverse-on-surface truncate">Dr. Sarah Lin MD</p>
+<p class="font-body-sm text-body-sm text-outline-variant truncate">Chief Medical Officer</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="flex-1 flex flex-col min-w-0 md:ml-72 bg-surface">
+<!-- Top Sticky Bar -->
+<header class="sticky top-0 z-30 w-full bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="px-6 lg:px-8 py-3.5 flex flex-col gap-3">
+<!-- Main Top Row: Search & Global Controls -->
+<div class="flex items-center justify-between gap-4">
+<!-- Search Bar -->
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/40 rounded-xl font-body-base text-body-base text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Search patient, specialty, doctor or bay..." type="text"/>
+<kbd class="hidden sm:inline-block absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[10px] font-semibold text-outline bg-surface-container-lowest border border-outline-variant/50 rounded shadow-xs">⌘K</kbd>
+</div>
+<!-- Live Sync Status & Global Action CTA Cluster -->
+<div class="flex items-center gap-3">
+<!-- Active Sync Pill -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-secondary-container/60 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim live-pulse"></span>
+<span class="font-badge-label text-badge-label text-on-surface-variant">Live Sync Active</span>
+<span class="text-[11px] font-data-tabular text-outline">9ms latency</span>
+</div>
+<!-- Global Action: Reallocate Physicians -->
+<button class="px-3.5 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface hover:bg-surface-container font-title-card text-title-card flex items-center gap-2 shadow-xs transition duration-150 active:scale-95">
+<span class="material-symbols-outlined text-lg text-primary">swap_horiz</span>
+<span class="hidden lg:inline">Reallocate Physicians</span>
+</button>
+<!-- Global Action: + Add Specialty Bay -->
+<button class="px-4 py-2 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-title-card text-title-card flex items-center gap-2 shadow-sm transition duration-150 active:scale-95">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>+ Add Specialty Bay</span>
+</button>
+<!-- Notification & Tune Icons -->
+<div class="flex items-center gap-1 border-l border-outline-variant/30 pl-2">
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition">
+<span class="material-symbols-outlined text-xl">tune</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Specialty Quick Filter Sub-Tabs -->
+<div class="flex items-center gap-6 overflow-x-auto border-t border-outline-variant/20 pt-2.5 no-scrollbar">
+<button class="font-body-medium text-body-medium text-primary border-b-2 border-primary pb-1 flex items-center gap-1.5 whitespace-nowrap">
+<span>All Specialties</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-primary font-bold text-[11px]">5 Wings</span>
+</button>
+<button class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 flex items-center gap-1.5 whitespace-nowrap">
+<span>Cardiology</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+<button class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 flex items-center gap-1.5 whitespace-nowrap">
+<span>Dermatology</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+</button>
+<button class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 flex items-center gap-1.5 whitespace-nowrap">
+<span>Pediatrics</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+</button>
+<button class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 whitespace-nowrap">
+<span>Orthopedics</span>
+</button>
+<button class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 whitespace-nowrap">
+<span>Ophthalmology</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas Area -->
+<main class="flex-1 p-6 lg:p-8 space-y-8 max-w-7xl w-full mx-auto">
+<!-- ==================== 1. BREADCRUMBS & SECTION TITLE ==================== -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div>
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-outline tracking-wider uppercase mb-1">
+<span>MEDIFLOW CORE</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-bold">CLINICAL SPECIALTIES &amp; BAY INFRASTRUCTURE</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Specialty Management &amp; Bay Allocation</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1 max-w-3xl">
+            Multi-department capacity orchestration, dedicated exam rooms, physician workload tracking, and dynamic cross-cover triage.
+          </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-3 shrink-0">
+<button class="px-4 py-2.5 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-title-card text-title-card flex items-center gap-2 shadow-sm transition duration-150 transform hover:scale-[1.02]">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span>Auto-Balance Capacities (AI)</span>
+</button>
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:bg-surface-container-low text-on-surface font-title-card text-title-card flex items-center gap-2 shadow-xs transition duration-150">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download Utilization Report</span>
+</button>
+</div>
+</div>
+<!-- ==================== 2. TOP METRICS / KPI ROW (5 CARDS) ==================== -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- Metric 1: Total Clinic Bays -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Total Clinic Bays</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">meeting_room</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">24 Bays</span>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">79% Utilized</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1 font-data-tabular">19 Active • 3 Res • 2 Maint</p>
+</div>
+</div>
+<!-- Metric 2: Active Physicians on Duty -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Doctors on Duty</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">stethoscope</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">16 Doctors</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Across 5 Clinical Wings</p>
+</div>
+</div>
+<!-- Metric 3: Highest Demand Wing -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-tertiary-container/40 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition">
+<div class="absolute top-0 left-0 right-0 h-1 bg-tertiary-container"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-tertiary uppercase font-bold">Highest Demand Wing</span>
+<span class="w-8 h-8 rounded-lg bg-error-container/40 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg">warning</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-tertiary">Pediatrics</span>
+<span class="font-badge-label text-badge-label px-1.5 py-0.5 rounded-full bg-error-container text-tertiary font-bold">96% Load</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg wait 21m • Bottleneck alert</p>
+</div>
+</div>
+<!-- Metric 4: Fastest Throughput -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Fastest Throughput</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">speed</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">Dermatology</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg consult 8.4m • 3 Bays Active</p>
+</div>
+</div>
+<!-- Metric 5: Cross-Cover Float Pool -->
+<div class="p-5 rounded-2xl bg-inverse-surface border border-secondary-fixed/30 shadow-md flex flex-col justify-between hover:shadow-lg transition">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase font-semibold">Float Pool Roster</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest/10 flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-lg">group_work</span>
+</span>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-inverse-on-surface">3 Floaters</span>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold">Available</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline-variant mt-1">Ready for dynamic triage reassign</p>
+</div>
+</div>
+</div>
+<!-- ==================== 3. SPECIALTY DEPARTMENT DETAIL GRID (5 CARDS) ==================== -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Clinical Specialty Wings &amp; Live Bays</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-primary font-badge-label text-badge-label font-bold">5 Departments</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Real-time room occupancy and physician shifts</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- WING 1: PEDIATRICS WING (Urgent / Bottleneck Alert) -->
+<div class="rounded-3xl bg-surface-container-lowest border-2 border-tertiary-container/30 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-tertiary-container"></div>
+<div>
+<!-- Header info & Lead Doctor -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-error-container/30 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">child_care</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Pediatrics Wing</h3>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-error-container text-tertiary font-bold animate-pulse">Critical Load</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Lead: Dr. Chen (Pediatrician • 6h on shift)</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<!-- Bay Capacity Visual -->
+<div class="mb-4 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center text-sm mb-2">
+<span class="font-title-card text-title-card text-on-surface">Exam Bay Capacity</span>
+<span class="font-data-tabular font-bold text-tertiary">4 of 4 Occupied (100%)</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5 mb-2">
+<div class="h-2 rounded-full bg-tertiary-container"></div>
+<div class="h-2 rounded-full bg-tertiary-container"></div>
+<div class="h-2 rounded-full bg-tertiary-container"></div>
+<div class="h-2 rounded-full bg-tertiary-container"></div>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant flex flex-wrap gap-x-2 gap-y-1">
+<span>• Exam 1: Triage</span>
+<span>• Exam 2: Consult</span>
+<span>• Exam 3: Floater Aris</span>
+<span>• Exam 4: Rapid Follow-up</span>
+</div>
+</div>
+<!-- Live Load Metric -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-error-container/20 border border-tertiary-container/30 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-lg">warning</span>
+<span class="font-title-card text-title-card text-tertiary">95% Bottleneck Warning</span>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary font-bold uppercase">+3 Overspill Waiting</span>
+</div>
+<!-- Doctor Roster & Utilization -->
+<div class="space-y-2 mb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Active Doctor Roster</span>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Dr. Chen (Attending)</span>
+<span class="font-data-tabular text-tertiary font-bold">98% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[98%]"></div>
+</div>
+<div class="flex items-center justify-between text-xs mt-2">
+<span class="text-on-surface font-medium">Dr. Aris (Floater Assigned)</span>
+<span class="font-data-tabular text-primary font-bold">78% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[78%]"></div>
+</div>
+</div>
+</div>
+<!-- Workflows & Intake Types -->
+<div class="mb-5">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold block mb-1.5">Common Workflows</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Urgent Asthma</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Well-Child</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Otitis Media</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Routine Vax</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-outline-variant/30">
+<button class="px-3 py-2 rounded-xl bg-tertiary hover:bg-tertiary/90 text-on-tertiary font-title-card text-title-card text-center transition active:scale-95 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base">person_add</span>
+<span>Request Floater</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface hover:bg-surface-container font-title-card text-title-card text-center transition">
+<span>Adjust Bay Quota</span>
+</button>
+</div>
+</div>
+<!-- WING 2: CARDIOLOGY WING (Balanced Performance) -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-primary-container"></div>
+<div>
+<!-- Header info & Lead Doctor -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">cardiology</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Cardiology Wing</h3>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-bold">Stable</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Lead: Dr. Al-Mansoor (Cardiology Lead)</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<!-- Bay Capacity Visual -->
+<div class="mb-4 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center text-sm mb-2">
+<span class="font-title-card text-title-card text-on-surface">Bay Capacity</span>
+<span class="font-data-tabular font-bold text-primary">3 of 4 Occupied (75%)</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5 mb-2">
+<div class="h-2 rounded-full bg-primary-container"></div>
+<div class="h-2 rounded-full bg-primary-container"></div>
+<div class="h-2 rounded-full bg-primary-container"></div>
+<div class="h-2 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant flex flex-wrap gap-x-2 gap-y-1">
+<span>• Cath Lab A</span>
+<span>• Cath Lab B</span>
+<span>• Echo Room 1</span>
+<span class="text-secondary font-semibold">• Bay 4 Available</span>
+</div>
+</div>
+<!-- Live Load Metric -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-primary-container/20 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="font-title-card text-title-card text-primary">75% Balanced Load</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline font-bold uppercase">Optimal Pace</span>
+</div>
+<!-- Doctor Roster & Utilization -->
+<div class="space-y-2 mb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Active Doctor Roster</span>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Dr. Al-Mansoor</span>
+<span class="font-data-tabular text-primary font-bold">88% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[88%]"></div>
+</div>
+<div class="flex items-center justify-between text-xs mt-2">
+<span class="text-on-surface font-medium">Dr. Elena Rostova</span>
+<span class="font-data-tabular text-primary font-bold">70% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[70%]"></div>
+</div>
+</div>
+</div>
+<!-- Workflows & Equipment -->
+<div class="mb-5">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold block mb-1.5">Workflows &amp; Procedures</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">ECG Stress Tests</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Post-Angio Monitor</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Echocardiogram</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-outline-variant/30">
+<button class="px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-title-card text-title-card text-center transition">
+<span>Manage Bays</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-title-card text-title-card text-center transition flex items-center justify-center gap-1.5">
+<span>View Waitlist (4)</span>
+</button>
+</div>
+</div>
+<!-- WING 3: DERMATOLOGY WING (Fastest Throughput & Cross-over Float Ready) -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-secondary-fixed-dim"></div>
+<div>
+<!-- Header info & Lead Doctor -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/40 text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">grain</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Dermatology Wing</h3>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-bold">High Velocity</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Lead: Dr. Vance (Derm &amp; Floater Lead)</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<!-- Bay Capacity Visual -->
+<div class="mb-4 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center text-sm mb-2">
+<span class="font-title-card text-title-card text-on-surface">Bay Capacity</span>
+<span class="font-data-tabular font-bold text-on-secondary-container">2 of 3 Occupied (66%)</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 mb-2">
+<div class="h-2 rounded-full bg-secondary-fixed-dim"></div>
+<div class="h-2 rounded-full bg-secondary-fixed-dim"></div>
+<div class="h-2 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant flex flex-wrap gap-x-2 gap-y-1">
+<span>• Laser Suite 1</span>
+<span>• Clinical Room B</span>
+<span class="text-secondary font-semibold">• Derm Bay 3 Standby</span>
+</div>
+</div>
+<!-- Highlight: Crossover Float Ready -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-secondary-container/30 border border-secondary-fixed/40 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-secondary-container text-lg">sync_alt</span>
+<span class="font-title-card text-title-card text-on-secondary-container">Crossover Float Ready</span>
+</div>
+<span class="font-badge-label text-badge-label text-secondary font-bold">Can assist Peds</span>
+</div>
+<!-- Doctor Roster & Utilization -->
+<div class="space-y-2 mb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Active Doctor Roster</span>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Dr. Vance (Float Capable)</span>
+<span class="font-data-tabular text-on-secondary-container font-bold">65% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-[65%]"></div>
+</div>
+<div class="flex items-center justify-between text-xs mt-2">
+<span class="text-on-surface font-medium">Dr. Sarah Lin (Consulting)</span>
+<span class="font-data-tabular text-primary font-bold">30% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[30%]"></div>
+</div>
+</div>
+</div>
+<!-- Workflows -->
+<div class="mb-5">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold block mb-1.5">Workflows &amp; Procedures</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Skin Lesion Biopsy</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Dermatitis Screen</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Patch Testing</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-outline-variant/30">
+<button class="px-3 py-2 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-title-card text-title-card text-center transition flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-base">downloading</span>
+<span>Assign to Float</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface hover:bg-surface-container font-title-card text-title-card text-center transition">
+<span>Bay Settings</span>
+</button>
+</div>
+</div>
+<!-- WING 4: ORTHOPEDICS WING (High Volume / Lab Delay Alert) -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-secondary"></div>
+<div>
+<!-- Header info & Lead Doctor -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">orthopedics</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Orthopedics Wing</h3>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-surface-container-highest text-primary font-bold">High Volume</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Lead: Dr. Kim (Orthopedic Surgeon)</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<!-- Bay Capacity Visual -->
+<div class="mb-4 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center text-sm mb-2">
+<span class="font-title-card text-title-card text-on-surface">Bay Capacity</span>
+<span class="font-data-tabular font-bold text-primary">3 of 3 Occupied (100%)</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 mb-2">
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant flex flex-wrap gap-x-2 gap-y-1">
+<span>• Plaster Bay 1</span>
+<span>• Plaster Bay 2</span>
+<span>• X-Ray Exam 3</span>
+</div>
+</div>
+<!-- Live Load Metric Alert -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-outline-variant/40 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">hourglass_top</span>
+<span class="font-title-card text-title-card text-on-surface">85% High Volume</span>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary font-bold">X-Ray Delay</span>
+</div>
+<!-- Doctor Roster & Utilization -->
+<div class="space-y-2 mb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Active Doctor Roster</span>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Dr. Kim (Lead)</span>
+<span class="font-data-tabular text-primary font-bold">92% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+<div class="flex items-center justify-between text-xs mt-2">
+<span class="text-on-surface font-medium">Dr. Lucas Vance (Resident)</span>
+<span class="font-data-tabular text-primary font-bold">80% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[80%]"></div>
+</div>
+</div>
+</div>
+<!-- Workflows -->
+<div class="mb-5">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold block mb-1.5">Common Workflows</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Fracture Reduction</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Joint Injections</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Post-Op Knee Check</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-outline-variant/30">
+<button class="px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-title-card text-title-card text-center transition flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-base">bolt</span>
+<span>Expedite Imaging</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface hover:bg-surface-container font-title-card text-title-card text-center transition">
+<span>Open Overspill</span>
+</button>
+</div>
+</div>
+<!-- WING 5: OPHTHALMOLOGY WING (Low Load / Idle Capacity Available) -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm p-6 flex flex-col justify-between hover:shadow-md transition relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-outline-variant"></div>
+<div>
+<!-- Header info & Lead Doctor -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">visibility</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Ophthalmology Wing</h3>
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-full bg-surface-container text-outline font-bold">Idle Capacity</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Lead: Dr. Nguyen (Specialist)</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<!-- Bay Capacity Visual -->
+<div class="mb-4 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center text-sm mb-2">
+<span class="font-title-card text-title-card text-on-surface">Bay Capacity</span>
+<span class="font-data-tabular font-bold text-outline">2 of 4 Occupied (50%)</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5 mb-2">
+<div class="h-2 rounded-full bg-primary-container"></div>
+<div class="h-2 rounded-full bg-primary-container"></div>
+<div class="h-2 rounded-full bg-outline-variant/30"></div>
+<div class="h-2 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="text-[11px] font-body-sm text-on-surface-variant flex flex-wrap gap-x-2 gap-y-1">
+<span>• Vision Suite 1</span>
+<span>• Slit Lamp Bay 2</span>
+<span class="text-secondary font-semibold">• Bay 3 Idle</span>
+<span class="text-secondary font-semibold">• Bay 4 Idle</span>
+</div>
+</div>
+<!-- Live Load Metric -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-outline-variant/20 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg">bed</span>
+<span class="font-title-card text-title-card text-on-surface">50% Low Utilization</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold uppercase">Ready for Overflow</span>
+</div>
+<!-- Doctor Roster & Utilization -->
+<div class="space-y-2 mb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Active Doctor Roster</span>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Dr. Nguyen</span>
+<span class="font-data-tabular text-primary font-bold">55% Utilization</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[55%]"></div>
+</div>
+</div>
+</div>
+<!-- Workflows -->
+<div class="mb-5">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold block mb-1.5">Workflows &amp; Procedures</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Glaucoma Check</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Diabetic Retino</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface-variant text-[11px] font-medium">Refractive Exam</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-3 border-t border-outline-variant/30">
+<button class="px-3 py-2 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-primary font-title-card text-title-card text-center transition">
+<span>Repurpose Bay</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface hover:bg-surface-container font-title-card text-title-card text-center transition">
+<span>Maintenance</span>
+</button>
+</div>
+</div>
+<!-- AI CAPACITY ORCHESTRATION CARD (Neon Bloom Highlight Banner) -->
+<div class="rounded-3xl bg-inverse-surface border border-secondary-fixed/40 p-6 flex flex-col justify-between text-inverse-on-surface shadow-lg relative overflow-hidden">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-badge-label text-badge-label px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                  AI Live Recommendation
+                </span>
+<span class="text-xs font-data-tabular text-outline-variant">Generated 2m ago</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-inverse-on-surface">Dynamic Rebalancing Suggested</h3>
+<p class="font-body-sm text-body-sm text-outline-variant">
+                Pediatrics wing is at <span class="text-secondary-fixed font-semibold">96% capacity</span> with 3 patients queued. Reallocate Dr. Vance (Dermatology, 65% load) and designate Ophthalmology Bay 404 as temporary Pediatric Exam Overspill.
+              </p>
+<div class="p-3.5 rounded-2xl bg-surface-container-highest/10 border border-outline-variant/20 space-y-2">
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline-variant">Estimated Wait Reduction:</span>
+<span class="font-bold text-secondary-fixed font-data-tabular">-14.2 minutes</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline-variant">Target Pediatric Throughput:</span>
+<span class="font-bold text-inverse-on-surface font-data-tabular">+24% consult speed</span>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-3 rounded-xl bg-secondary-fixed hover:bg-secondary-fixed-dim text-on-secondary-fixed font-title-card text-title-card font-bold flex items-center justify-center gap-2 transition duration-150 transform hover:scale-[1.01] active:scale-98 shadow-md">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Execute Automated Rebalance</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ==================== 4. DYNAMIC BAY ALLOCATION & CROSS-COVERAGE TABLE ==================== -->
+<section class="rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm p-6 space-y-5">
+<!-- Table Controls Header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Dynamic Bay Allocation &amp; Room Timetable</h2>
+<span class="font-badge-label text-badge-label px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-bold">19 / 24 Occupied</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Real-time telemetry, bay sterilization states, and immediate physical triage overrides</p>
+</div>
+<!-- Table Filters & Batch Action -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<div class="flex items-center bg-surface-container-low rounded-xl p-1 border border-outline-variant/30 text-xs font-body-medium">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface shadow-xs font-semibold">All Bays (24)</button>
+<button class="px-3 py-1.5 text-outline hover:text-on-surface">Pediatrics (4)</button>
+<button class="px-3 py-1.5 text-outline hover:text-on-surface">Cardiology (4)</button>
+<button class="px-3 py-1.5 text-outline hover:text-on-surface">Turnover (2)</button>
+</div>
+<button class="px-3 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 text-on-surface font-title-card text-title-card flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">filter_list</span>
+<span>Filter</span>
+</button>
+</div>
+</div>
+<!-- Room Timetable / Allocation Table -->
+<div class="overflow-x-auto rounded-2xl border border-outline-variant/30">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-outline-variant/30 font-label-caps text-label-caps text-outline uppercase tracking-wider">
+<th class="py-3 px-4">Bay ID</th>
+<th class="py-3 px-4">Clinical Wing</th>
+<th class="py-3 px-4">Occupying Physician</th>
+<th class="py-3 px-4">Current Patient Token</th>
+<th class="py-3 px-4">Sanitation &amp; Hardware Status</th>
+<th class="py-3 px-4">Session Elapsed</th>
+<th class="py-3 px-4 text-right">Quick Action Override</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-base text-body-base">
+<!-- Row 1: Bay 101 - Pediatrics -->
+<tr class="hover:bg-surface-container-low/40 transition">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span>Bay 101</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">Pediatrics</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-tertiary-container/20 text-tertiary font-bold text-xs flex items-center justify-center">DC</span>
+<span class="font-medium text-on-surface">Dr. Chen</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-data-tabular">#PED-882 (Urgent Asthma)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-badge-label text-badge-label">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+                    Active &amp; Monitored
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">18m 42s</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-medium transition">Swap Doctor</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Bay 102 - Pediatrics (Overloaded) -->
+<tr class="hover:bg-surface-container-low/40 transition">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span>Bay 102</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">Pediatrics</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-bold text-xs flex items-center justify-center">DA</span>
+<span class="font-medium text-on-surface">Dr. Aris (Floater)</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-data-tabular">#PED-904 (Otitis Media)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-badge-label text-badge-label">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+                    Active Exam
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">06m 15s</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-tertiary/10 hover:bg-tertiary/20 text-tertiary font-medium transition">Triage Override</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Bay 201 - Cardiology -->
+<tr class="hover:bg-surface-container-low/40 transition">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span>Bay 201 (Cath A)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">Cardiology</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-primary-container/20 text-primary font-bold text-xs flex items-center justify-center">AM</span>
+<span class="font-medium text-on-surface">Dr. Al-Mansoor</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-data-tabular">#CRD-319 (Post-Angio)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-primary font-badge-label text-badge-label">
+<span class="material-symbols-outlined text-xs">verified</span>
+                    Sterilized &amp; Telemetry
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">32m 10s</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-medium transition">Swap Doctor</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Bay 301 - Dermatology -->
+<tr class="hover:bg-surface-container-low/40 transition">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
+<span>Bay 301 (Laser)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">Dermatology</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-bold text-xs flex items-center justify-center">DV</span>
+<span class="font-medium text-on-surface">Dr. Vance</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-data-tabular">#DRM-112 (Biopsy)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-badge-label text-badge-label">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+                    Turnover Scheduled (2m)
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">07m 50s</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-semibold transition">Reassign Float</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Bay 401 - Orthopedics -->
+<tr class="hover:bg-surface-container-low/40 transition">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span>Bay 401 (Plaster)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface">Orthopedics</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-primary/20 text-primary font-bold text-xs flex items-center justify-center">DK</span>
+<span class="font-medium text-on-surface">Dr. Kim</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-badge-label text-badge-label px-2 py-0.5 rounded-md bg-surface-container text-on-surface font-data-tabular">#ORT-552 (Fracture)</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-badge-label text-badge-label">
+<span class="material-symbols-outlined text-xs text-primary">hourglass_empty</span>
+                    X-Ray Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">24m 15s</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-medium transition">Swap Doctor</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Bay 504 - Ophthalmology (Sanitizing / Standby) -->
+<tr class="hover:bg-surface-container-low/40 transition bg-surface-container-low/20">
+<td class="py-3.5 px-4 font-data-tabular font-bold text-outline">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span>Bay 504 (Slit Lamp)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-outline">Ophthalmology</td>
+<td class="py-3.5 px-4 text-outline font-data-tabular italic">Unassigned (Idle)</td>
+<td class="py-3.5 px-4 text-outline italic text-xs">No active patient token</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-outline font-badge-label text-badge-label">
+<span class="material-symbols-outlined text-xs">cleaning_services</span>
+                    Sanitizing Complete • Idle
+                  </span>
+</td>
+<td class="py-3.5 px-4 font-data-tabular text-outline">—</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1.5">
+<button class="px-2.5 py-1 text-xs rounded-lg bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-semibold transition">Assign Overspill</button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-lg">build</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination / Footer Summary -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-outline pt-2">
+<span>Showing 6 of 24 Total Clinical Bays across Regional Health Hub</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant/40 hover:bg-surface-container text-on-surface font-medium disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-data-tabular text-on-surface font-bold">Page 1 of 4</span>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant/40 hover:bg-surface-container text-on-surface font-medium">Next</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Global App Footer -->
+<footer class="mt-auto px-8 py-5 border-t border-outline-variant/20 bg-surface-container-lowest text-outline text-xs flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">MediFlow AI</span>
+<span>• Enterprise Regional Healthcare Engine v4.8</span>
+</div>
+<div class="flex items-center gap-6">
+<span>FHIR R4 Protocol Active</span>
+<span>HIPAA Compliant</span>
+<span class="flex items-center gap-1.5 text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+          All 5 Clinical Clusters Operational
+        </span>
+</div>
+</footer>
+</div>
+</body></html>

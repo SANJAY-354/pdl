@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediFlow AI - Analytics &amp; Clinic Performance Intelligence</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#506600",
+            "primary-container": "#7657ff",
+            "surface": "#fdf8ff",
+            "on-background": "#1c1734",
+            "surface-container-high": "#ece4ff",
+            "on-secondary-fixed-variant": "#3b4d00",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#ffd9de",
+            "inverse-primary": "#c9beff",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#fdf8ff",
+            "on-primary-container": "#fffdff",
+            "surface-container-highest": "#e6deff",
+            "surface-container": "#f1ebff",
+            "error-container": "#ffdad6",
+            "surface-tint": "#5e3be7",
+            "inverse-on-surface": "#f4eeff",
+            "on-secondary-fixed": "#161f00",
+            "surface-variant": "#e6deff",
+            "secondary-fixed-dim": "#afd43e",
+            "outline": "#797587",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#fffeff",
+            "on-primary-fixed": "#1b0063",
+            "tertiary": "#a92d51",
+            "on-tertiary-fixed": "#3f0015",
+            "on-surface": "#1c1734",
+            "background": "#fdf8ff",
+            "primary": "#5d39e5",
+            "on-secondary-container": "#536b00",
+            "on-surface-variant": "#484555",
+            "tertiary-container": "#ca4669",
+            "outline-variant": "#c9c4d8",
+            "on-tertiary": "#ffffff",
+            "primary-fixed-dim": "#c9beff",
+            "on-error": "#ffffff",
+            "inverse-surface": "#312c4a",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#e6deff",
+            "surface-container-low": "#f7f1ff",
+            "tertiary-fixed-dim": "#ffb2bf",
+            "on-tertiary-fixed-variant": "#8b133b",
+            "surface-dim": "#ddd5fc",
+            "secondary-fixed": "#caf158",
+            "secondary-container": "#c7ee55",
+            "on-primary-fixed-variant": "#4612cf"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "margin": "2rem",
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "body-medium": ["Inter"],
+            "label-caps": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-base": ["Inter"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "data-tabular": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "title-card": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "badge-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-base": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f1ebff;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c9c4d8;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #7657ff;
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(0.96); }
+    }
+    .pulse-indicator {
+      animation: subtlePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex selection:bg-secondary-container selection:text-on-secondary-fixed">
+<!-- ========================================================================= -->
+<!-- 1. FIXED SIDE NAVIGATION BAR (SHARED COMPONENT ANCHOR)                     -->
+<!-- ========================================================================= -->
+<aside class="fixed top-0 left-0 h-screen w-72 flex flex-col justify-between bg-inverse-surface border-r border-outline-variant/20 shadow-lg z-40 py-6 px-4">
+<!-- Header / Brand Section -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-md">
+<span class="material-symbols-outlined text-[24px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-tight">MediFlow AI</span>
+<span class="font-label-caps text-label-caps text-outline-variant">Regional Health Hub</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-secondary-container text-on-secondary-fixed font-title-card text-title-card font-bold hover:brightness-105 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+<span>Optimize Queue</span>
+</button>
+<!-- Main Navigation Links -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1 mt-2">
+<!-- Tab 0: Operations -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Operations</span>
+</a>
+<!-- Tab 1: Live Queue -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="queue">queue</span>
+<span>Live Queue</span>
+</a>
+<!-- Tab 2: Appointments -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_today">calendar_today</span>
+<span>Appointments</span>
+</a>
+<!-- Tab 3: Specialties -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="medical_services">medical_services</span>
+<span>Specialties</span>
+</a>
+<!-- Tab 4: AI Insights -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+<span>AI Insights</span>
+</a>
+<!-- Tab 5: Staff Schedule -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="badge">badge</span>
+<span>Staff Schedule</span>
+</a>
+<!-- Tab 6: Analytics (ACTIVE TAB - EXACT MATCH) -->
+<a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-primary text-on-primary font-body-medium text-body-medium shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="monitoring">monitoring</span>
+<span>Analytics</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-secondary-container"></span>
+</a>
+</nav>
+</div>
+<!-- Footer Utility Links -->
+<div class="flex flex-col gap-1 border-t border-outline-variant/15 pt-4">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-outline-variant hover:text-on-primary hover:bg-surface-container-highest/10 font-body-medium text-body-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<!-- System Operational Indicator -->
+<div class="mt-3 px-3 py-2 rounded-lg bg-surface-container-highest/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed pulse-indicator"></span>
+<span class="font-label-caps text-label-caps text-inverse-on-surface">Engine v4.2 Active</span>
+</div>
+<span class="font-data-tabular text-data-tabular text-outline-variant">99.98%</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN APPLICATION CANVAS WRAPPER (Offset ml-72 for desktop navigation)      -->
+<!-- ========================================================================= -->
+<div class="flex-1 ml-72 flex flex-col min-h-screen">
+<!-- Top Navigation Bar (Shared Component Anchor) -->
+<header class="sticky top-0 z-30 w-full bg-surface-container-lowest border-b border-outline-variant/30 shadow-sm flex items-center justify-between h-18 px-8 py-3.5">
+<!-- Search & Specialty Navigation Links -->
+<div class="flex items-center gap-6 flex-1 max-w-2xl">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/40 rounded-xl font-body-base text-body-base text-on-surface focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all placeholder:text-outline" placeholder="Search metric, wing, or physician..." type="text"/>
+</div>
+<nav aria-label="Specialty Quick Filters" class="hidden xl:flex items-center gap-5">
+<span class="font-body-medium text-body-medium text-primary border-b-2 border-primary pb-1 cursor-pointer">Cardiology</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 cursor-pointer">Dermatology</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 cursor-pointer">Pediatrics</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 cursor-pointer">Orthopedics</span>
+<span class="font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors pb-1 cursor-pointer">Ophthalmology</span>
+</nav>
+</div>
+<!-- Action Cluster & Profile Info -->
+<div class="flex items-center gap-3.5">
+<button class="px-3.5 py-2 rounded-xl border border-tertiary-container/30 bg-tertiary-fixed/30 hover:bg-tertiary-fixed/50 text-tertiary font-title-card text-title-card flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px] text-tertiary" data-icon="local_hospital">local_hospital</span>
+<span>Emergency Triage</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-primary-container hover:bg-primary text-on-primary-container font-title-card text-title-card flex items-center gap-2 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New Booking</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/40 mx-1"></div>
+<button aria-label="Notifications" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors relative">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary"></span>
+</button>
+<button aria-label="Preferences" class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[22px]" data-icon="tune">tune</span>
+</button>
+<div class="flex items-center gap-3 pl-2">
+<img class="w-9 h-9 rounded-full object-cover ring-2 ring-primary-container/30" data-alt="A distinguished female chief medical officer in clean hospital scrubs and white coat, posing thoughtfully against a high-tech modern medical clinic interior with soft lavender ambient illumination and crisp daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrhQ-qnP-2GpH8XCiI6gMNvv6oC5H66fmvsw8hV8FO8T19iqVEJJPNko_8OEK7CEwPK76RRRFxmXI-pNuKjzn70tYlO4TiTG0qKonNodSAcCh96gl5K3gxse6FFxNyrcjthNS2WzrDcx3bHMmAQOxSp1LF3qKyFVEINS1M6yw5JOQ1L3_jenI7MDF8cueADCTFO3nu3N6kA1oQwHJxSqeax9r7VQqC8ac5_R4HSsvi2hysYr8YRA8FHQ"/>
+<div class="hidden 2xl:flex flex-col">
+<span class="font-body-medium text-body-medium font-bold text-on-surface leading-tight">Dr. Sarah Lin MD</span>
+<span class="font-label-caps text-label-caps text-outline">Chief Medical Officer</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT AREA -->
+<main class="flex-1 p-8 space-y-8 max-w-[1720px] w-full mx-auto">
+<!-- ========================================================================= -->
+<!-- TOP CONTEXT STRIP: FILTERS, DATE SELECTION, COHORT TOGGLE & ACTIONS        -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+<!-- Left: Date Range & Specialty Filter Pills -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Date Range Dropdown Capsule -->
+<div class="inline-flex items-center gap-1.5 bg-surface-container px-3 py-1.5 rounded-xl border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="calendar_month">calendar_month</span>
+<select class="bg-transparent font-body-medium text-body-medium text-on-surface font-semibold focus:outline-none cursor-pointer pr-2">
+<option>Last 30 Days (Oct 1 - Oct 31)</option>
+<option>Q3 2024</option>
+<option>Custom Date Range...</option>
+</select>
+</div>
+<div class="h-6 w-px bg-outline-variant/40 hidden sm:block"></div>
+<!-- Specialty Badges -->
+<div class="flex flex-wrap items-center gap-1.5">
+<button class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-badge-label text-badge-label shadow-xs">
+              All Specialties
+            </button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-badge-label text-badge-label transition-colors">
+              Pediatrics
+            </button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-badge-label text-badge-label transition-colors">
+              Cardiology
+            </button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-badge-label text-badge-label transition-colors">
+              Dermatology
+            </button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-badge-label text-badge-label transition-colors">
+              Orthopedics
+            </button>
+<button class="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-badge-label text-badge-label transition-colors">
+              Ophthalmology
+            </button>
+</div>
+</div>
+<!-- Right: Cohort Toggle & Report Export Actions -->
+<div class="flex flex-wrap items-center gap-3 self-end lg:self-auto">
+<!-- Segmented Cohort Toggle -->
+<div class="inline-flex p-1 bg-surface-container rounded-xl border border-outline-variant/40">
+<button class="px-3 py-1 rounded-lg bg-surface-container-lowest font-body-medium text-body-medium font-semibold text-primary shadow-xs">
+              Outpatient
+            </button>
+<button class="px-3 py-1 rounded-lg font-body-medium text-body-medium text-on-surface-variant hover:text-on-surface transition-colors">
+              Inpatient
+            </button>
+</div>
+<!-- Benchmark Action -->
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container text-on-surface font-title-card text-title-card transition-colors">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span>Benchmark Against Regional SLAs</span>
+</button>
+<!-- Export Report Button -->
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-opacity-90 font-title-card text-title-card shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed" data-icon="download">download</span>
+<span>Export PDF / CSV Report</span>
+</button>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 2. EXECUTIVE TELEMETRY & KPI METRIC CARDS (5-COLUMN BENTO GRID)            -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+<!-- KPI 1: Wait Time Reduction -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Wait Time Efficiency</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/20 flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="timer">timer</span>
+</div>
+</div>
+<div>
+<div class="font-display-hero text-display-hero text-on-surface tracking-tight mb-1">14.2 <span class="text-2xl font-semibold text-outline">min</span></div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-badge-label text-badge-label">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                -38.4%
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">vs Regional Baseline (23m)</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-data-tabular text-data-tabular">
+<span>Prior Q3 Avg: 21.8m</span>
+<span class="text-secondary font-semibold">Top 3% State Tier</span>
+</div>
+</div>
+<!-- KPI 2: Clinic Daily Throughput -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Encounter Throughput</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="groups">groups</span>
+</div>
+</div>
+<div>
+<div class="font-display-hero text-display-hero text-on-surface tracking-tight mb-1">482 <span class="text-2xl font-semibold text-outline">/day</span></div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-badge-label text-badge-label">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                +22.6%
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Capacity recaptured</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-data-tabular text-data-tabular">
+<span>Peak slot: 11:30 AM</span>
+<span class="text-primary font-semibold">91.4% Room Utilization</span>
+</div>
+</div>
+<!-- KPI 3: AI Queue Optimization Adoption -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border-2 border-secondary-fixed shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-secondary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps text-label-caps text-outline uppercase">AI Autonomy Rate</span>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed pulse-indicator"></span>
+</div>
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+</div>
+</div>
+<div>
+<div class="font-display-hero text-display-hero text-on-surface tracking-tight mb-1">94.8%</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-badge-label text-badge-label">
+                ML Active
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Only 5.2% staff overrides</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-data-tabular text-data-tabular">
+<span>2,140 auto-routed visits</span>
+<span class="text-secondary font-semibold">Zero Routing Clashes</span>
+</div>
+</div>
+<!-- KPI 4: Doctor Burnout Mitigated -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Clinician Fatigue Guard</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]" data-icon="vital_signs">vital_signs</span>
+</div>
+</div>
+<div>
+<div class="font-display-hero text-display-hero text-on-surface tracking-tight mb-1">47 <span class="text-2xl font-semibold text-outline">Shielded</span></div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-badge-label text-badge-label">
+                Across 6 Wings
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Fatigue index &lt; 3.2</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-data-tabular text-data-tabular">
+<span>Floater load: 88 hrs</span>
+<span class="text-tertiary font-semibold">0 Critical Overruns</span>
+</div>
+</div>
+<!-- KPI 5: Peak Surge SLA Compliance -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-caps text-label-caps text-outline uppercase">Peak Surge SLA</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/20 flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+</div>
+</div>
+<div>
+<div class="font-display-hero text-display-hero text-on-surface tracking-tight mb-1">98.7%</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-badge-label text-badge-label">
+                Target: 95.0%
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">+3.7% above SLA quota</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-data-tabular text-data-tabular">
+<span>On-time consults: 14,210</span>
+<span class="text-secondary font-semibold">Exceeding Tier 1</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. CORE DEEP-DIVE CHARTS & VISUALIZATIONS (BENTO ASYMMETRIC GRID)          -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- HEATMAP: Real-Time Wait Time & Bottleneck Grid (7 cols) -->
+<div class="xl:col-span-7 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-outline-variant/20 gap-3">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hourly Wait Time &amp; Bottleneck Heatmap</h3>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-badge-label text-badge-label">30-Day Aggregation</span>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant mt-0.5">Distribution across clinical hours (08:00 – 18:00) vs Operating Days</p>
+</div>
+<!-- Heatmap legend -->
+<div class="flex items-center gap-3 text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-secondary-container"></span><span>&lt;10m Optimal</span></div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-[#FFBF69]"></span><span>10-20m Moderate</span></div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-tertiary-container"></span><span>&gt;20m Surge Breach</span></div>
+</div>
+</div>
+<!-- The Heatmap Matrix Table -->
+<div class="overflow-x-auto custom-scroll mt-4">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left font-label-caps text-label-caps text-outline">
+<th class="py-2.5 px-2 w-20">DAY</th>
+<th class="py-2.5 px-1 text-center">08:00</th>
+<th class="py-2.5 px-1 text-center">09:00</th>
+<th class="py-2.5 px-1 text-center">10:00</th>
+<th class="py-2.5 px-1 text-center font-bold text-tertiary">11:00</th>
+<th class="py-2.5 px-1 text-center font-bold text-tertiary">12:00</th>
+<th class="py-2.5 px-1 text-center font-bold text-tertiary">13:00</th>
+<th class="py-2.5 px-1 text-center">14:00</th>
+<th class="py-2.5 px-1 text-center">15:00</th>
+<th class="py-2.5 px-1 text-center">16:00</th>
+<th class="py-2.5 px-1 text-center">17:00</th>
+<th class="py-2.5 px-1 text-center">18:00</th>
+</tr>
+</thead>
+<tbody class="font-data-tabular text-data-tabular divide-y divide-surface-container">
+<!-- Mon -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Mon</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/80 flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/70 flex items-center justify-center text-[#7C4800] font-semibold">14m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold">24m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold">28m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">18m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/60 flex items-center justify-center text-[#7C4800] font-semibold">12m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/70 flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+</tr>
+<!-- Tue -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Tue</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/80 flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">16m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold">22m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/80 flex items-center justify-center text-[#7C4800] font-semibold">15m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">10m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/70 flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+</tr>
+<!-- Wed (Annotated Rush) -->
+<tr class="bg-surface-container-high/30">
+<td class="py-2 px-2 font-bold text-primary flex items-center gap-1">
+                    Wed
+                    <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/60 flex items-center justify-center text-[#7C4800] font-semibold">12m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">17m</div></td>
+<td class="p-1 relative ring-2 ring-tertiary rounded-lg"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-extrabold text-[13px]">32m</div></td>
+<td class="p-1 relative ring-2 ring-tertiary rounded-lg"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-extrabold text-[13px]">36m</div></td>
+<td class="p-1 relative ring-2 ring-tertiary rounded-lg"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-extrabold text-[13px]">29m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/80 flex items-center justify-center text-[#7C4800] font-semibold">15m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/70 flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+</tr>
+<!-- Thu -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Thu</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">10m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">14m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">19m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">16m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/70 flex items-center justify-center text-on-secondary-container font-semibold">3m</div></td>
+</tr>
+<!-- Fri -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Fri</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/70 flex items-center justify-center text-[#7C4800] font-semibold">13m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold">21m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center font-bold">25m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69] flex items-center justify-center text-[#7C4800] font-semibold">18m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/70 flex items-center justify-center text-[#7C4800] font-semibold">13m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/70 flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+</tr>
+<!-- Sat -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Sat</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">10m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/70 flex items-center justify-center text-[#7C4800] font-semibold">13m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-[#FFBF69]/60 flex items-center justify-center text-[#7C4800] font-semibold">11m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container/60 flex items-center justify-center text-on-secondary-container font-semibold">3m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline">--</div></td>
+</tr>
+<!-- Sun -->
+<tr>
+<td class="py-2 px-2 font-semibold text-on-surface">Sun</td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">5m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">7m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">9m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">8m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">6m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold">4m</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline">--</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline">--</div></td>
+<td class="p-1"><div class="h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline">--</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Annotation Bar -->
+<div class="mt-4 p-3 rounded-xl bg-surface-container-high/40 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="lightbulb">lightbulb</span>
+<span class="font-body-base text-body-base text-on-surface font-medium">
+<strong>Pediatrics Rush:</strong> Wednesdays 11:00–13:00 exhibits a +18.4m bottleneck peak driven by scheduled immunization walk-ins.
+              </span>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-primary-container text-on-primary-container font-badge-label text-badge-label hover:bg-primary transition-colors flex items-center gap-1">
+<span>Auto-Rebalance Slots</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- RIGHT: Physician Workload & Cognitive Fatigue Distribution (5 cols) -->
+<div class="xl:col-span-5 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Physician Workload &amp; Cognitive Limit</h3>
+<p class="font-body-base text-body-base text-on-surface-variant mt-0.5">Encounters vs Maximum Safe Threshold by Wing</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="psychology">psychology</span>
+</div>
+<!-- Comparison Bars Component -->
+<div class="space-y-4 my-4">
+<!-- Cardiology -->
+<div>
+<div class="flex items-center justify-between text-body-medium font-body-medium mb-1">
+<span class="font-bold text-on-surface">Cardiology (14 Attending)</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">28 / 32 Max Safe Encounters <strong class="text-secondary">(87.5%)</strong></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container relative overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 87.5%;"></div>
+<div class="absolute top-0 bottom-0 right-[20%] w-0.5 bg-outline-variant"></div>
+</div>
+<div class="flex justify-between text-[11px] font-data-tabular text-outline mt-1">
+<span>Safe Floor: 20</span>
+<span>Floater absorbed: 14 hrs</span>
+<span class="text-secondary font-semibold">Safe Zone</span>
+</div>
+</div>
+<!-- Pediatrics -->
+<div>
+<div class="flex items-center justify-between text-body-medium font-body-medium mb-1">
+<span class="font-bold text-on-surface">Pediatrics (18 Attending)</span>
+<span class="font-data-tabular text-data-tabular text-tertiary">38 / 34 Max Safe Encounters <strong class="text-tertiary">(111.7% - Alert)</strong></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container relative overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 100%;"></div>
+</div>
+<div class="flex justify-between text-[11px] font-data-tabular text-outline mt-1">
+<span>Safe Floor: 22</span>
+<span>Floater absorbed: 42 hrs</span>
+<span class="text-tertiary font-bold">Surge Trigger Activated</span>
+</div>
+</div>
+<!-- Dermatology -->
+<div>
+<div class="flex items-center justify-between text-body-medium font-body-medium mb-1">
+<span class="font-bold text-on-surface">Dermatology (10 Attending)</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">24 / 30 Max Safe Encounters <strong class="text-secondary">(80.0%)</strong></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container relative overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full" style="width: 80%;"></div>
+</div>
+<div class="flex justify-between text-[11px] font-data-tabular text-outline mt-1">
+<span>Safe Floor: 18</span>
+<span>Floater absorbed: 6 hrs</span>
+<span class="text-secondary font-semibold">Balanced Load</span>
+</div>
+</div>
+<!-- Orthopedics -->
+<div>
+<div class="flex items-center justify-between text-body-medium font-body-medium mb-1">
+<span class="font-bold text-on-surface">Orthopedics (12 Attending)</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">29 / 30 Max Safe Encounters <strong class="text-[#C47C10]">(96.6%)</strong></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container relative overflow-hidden">
+<div class="h-full bg-[#FFBF69] rounded-full" style="width: 96.6%;"></div>
+</div>
+<div class="flex justify-between text-[11px] font-data-tabular text-outline mt-1">
+<span>Safe Floor: 20</span>
+<span>Floater absorbed: 26 hrs</span>
+<span class="text-[#C47C10] font-semibold">Borderline Limit</span>
+</div>
+</div>
+</div>
+<!-- Bottom Micro-insight -->
+<div class="p-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-fixed flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-card text-title-card font-bold text-on-primary">Floaters Re-routed dynamically</span>
+<span class="font-body-sm text-body-sm text-outline-variant">3 On-Call PAs shifted to Pediatrics today</span>
+</div>
+</div>
+<span class="font-badge-label text-badge-label px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed">Zero Breaches</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- AUTONOMOUS AI IMPACT WATERFALL & ROI BREAKDOWN (PREDICTIVE BANNER)         -->
+<!-- ========================================================================= -->
+<section class="rounded-2xl p-6 bg-inverse-surface border border-secondary-fixed/40 relative overflow-hidden shadow-lg" style="background: linear-gradient(135deg, rgba(49, 44, 74, 1) 0%, rgba(37, 32, 61, 1) 50%, rgba(118, 87, 255, 0.15) 100%);">
+<!-- Header Strip -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between pb-6 border-b border-outline-variant/15 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-fixed flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[22px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-primary">Autonomous AI Impact &amp; Financial ROI Breakdown</h2>
+<p class="font-body-base text-body-base text-inverse-on-surface/80">Quantified Clinical Hours Recaptured &amp; Operational Waste Dissipation for Q3 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-badge-label text-badge-label">ROI 4.6x Certified</span>
+<span class="font-body-sm text-body-sm text-inverse-on-surface/70">Verified by Clinical Ops Auditing</span>
+</div>
+</div>
+<!-- Metric Waterfall Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+<!-- Waterfall Item 1 -->
+<div class="p-4 rounded-xl bg-surface-container-highest/10 border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase">Clinical Hours Saved</span>
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]" data-icon="schedule">schedule</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-primary my-1">
+              142 <span class="font-title-card text-title-card text-secondary-fixed">hrs / month</span>
+</div>
+<p class="font-body-base text-body-base text-inverse-on-surface/80 mt-1">
+              Automated intake triage, instant queue re-slotting, and zero-touch EHR summary pre-population.
+            </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/15 flex items-center justify-between text-body-sm font-data-tabular text-inverse-on-surface/70">
+<span>Equiv. to +1.2 Full-Time MDs</span>
+<span class="text-secondary-fixed font-bold">+28% Consult Focus</span>
+</div>
+</div>
+<!-- Waterfall Item 2 -->
+<div class="p-4 rounded-xl bg-surface-container-highest/10 border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase">No-Show Revenue Protection</span>
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]" data-icon="payments">payments</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-primary my-1">
+              -$48,000 <span class="font-title-card text-title-card text-secondary-fixed">Loss Mitigated</span>
+</div>
+<p class="font-body-base text-body-base text-inverse-on-surface/80 mt-1">
+              AI predictive standby matching filled 92.4% of cancellations within a 9-minute rolling notification window.
+            </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/15 flex items-center justify-between text-body-sm font-data-tabular text-inverse-on-surface/70">
+<span>268 Standby slots backfilled</span>
+<span class="text-secondary-fixed font-bold">98.4% Fill Efficacy</span>
+</div>
+</div>
+<!-- Waterfall Item 3 -->
+<div class="p-4 rounded-xl bg-surface-container-highest/10 border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase">Sterilization &amp; Room Turnover</span>
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]" data-icon="sanitizer">sanitizer</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-primary my-1">
+              +18 <span class="font-title-card text-title-card text-secondary-fixed">min Faster Cycle</span>
+</div>
+<p class="font-body-base text-body-base text-inverse-on-surface/80 mt-1">
+              Environmental service staff auto-alerted based on real-time encounter conclusion ML signals.
+            </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/15 flex items-center justify-between text-body-sm font-data-tabular text-inverse-on-surface/70">
+<span>Average turnaround: 7.2 mins</span>
+<span class="text-secondary-fixed font-bold">14 Suites Optimized</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. DEPARTMENTAL PERFORMANCE LEADERBOARD & ANOMALY LEDGER (TWO COLUMNS)     -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Ranked Departmental Leaderboard Table (8 cols) -->
+<div class="xl:col-span-8 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 mb-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Departmental Performance Leaderboard</h3>
+<p class="font-body-base text-body-base text-on-surface-variant">Real-time throughput, consult fidelity, and SLA rankings across clinical wings</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">Sort:</span>
+<select class="bg-surface-container text-on-surface text-body-sm font-body-sm px-2.5 py-1 rounded-lg border border-outline-variant/40 focus:outline-none">
+<option>SLA Compliance %</option>
+<option>Daily Encounters</option>
+<option>Duration vs ML Predicted</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-caps text-label-caps text-outline border-b border-surface-container">
+<th class="py-3 px-3">SPECIALTY &amp; WING</th>
+<th class="py-3 px-3 text-right">DAILY PATIENTS</th>
+<th class="py-3 px-3 text-right">AVG CONSULT vs ML</th>
+<th class="py-3 px-3 text-center">FLOATERS</th>
+<th class="py-3 px-3 text-right">SLA COMPLIANCE</th>
+<th class="py-3 px-3 text-center">TREND</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-base text-body-base">
+<!-- Row 1: Cardiology -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs">
+                          #1
+                        </div>
+<div>
+<div class="font-bold text-on-surface">Cardiology Wing A</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lead: Dr. Julian Hayes</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular font-bold text-on-surface">
+                      112
+                    </td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="font-bold text-on-surface">18.4m</span>
+<span class="text-secondary text-xs block font-semibold">-0.6m vs ML</span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-data-tabular text-data-tabular text-on-surface">1 PA</span>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="inline-flex items-center gap-1 font-bold text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                        99.4%
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="text-secondary font-bold text-sm">↗ +1.8%</span>
+</td>
+</tr>
+<!-- Row 2: Ophthalmology -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs">
+                          #2
+                        </div>
+<div>
+<div class="font-bold text-on-surface">Ophthalmology Suite</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lead: Dr. Regina Vance</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular font-bold text-on-surface">
+                      94
+                    </td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="font-bold text-on-surface">14.1m</span>
+<span class="text-secondary text-xs block font-semibold">-1.2m vs ML</span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-data-tabular text-data-tabular text-on-surface">0 PA</span>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="inline-flex items-center gap-1 font-bold text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                        99.1%
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="text-secondary font-bold text-sm">→ 0.0%</span>
+</td>
+</tr>
+<!-- Row 3: Dermatology -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs">
+                          #3
+                        </div>
+<div>
+<div class="font-bold text-on-surface">Dermatology Clinic</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lead: Dr. Marcus Vance</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular font-bold text-on-surface">
+                      88
+                    </td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="font-bold text-on-surface">16.8m</span>
+<span class="text-on-surface-variant text-xs block">+0.2m vs ML</span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-data-tabular text-data-tabular text-on-surface">1 PA</span>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="inline-flex items-center gap-1 font-bold text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                        98.2%
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="text-secondary font-bold text-sm">↗ +0.4%</span>
+</td>
+</tr>
+<!-- Row 4: Orthopedics -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs">
+                          #4
+                        </div>
+<div>
+<div class="font-bold text-on-surface">Orthopedics &amp; Cast Wing</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lead: Dr. Teresa Gomez</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular font-bold text-on-surface">
+                      78
+                    </td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="font-bold text-on-surface">24.2m</span>
+<span class="text-[#C47C10] text-xs block font-semibold">+3.8m vs ML</span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-[#FFBF69]/30 text-[#7C4800] font-data-tabular text-data-tabular font-semibold">2 PAs</span>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="inline-flex items-center gap-1 font-bold text-[#C47C10]">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+                        96.3%
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="text-tertiary font-bold text-sm">↘ -1.2%</span>
+</td>
+</tr>
+<!-- Row 5: Pediatrics (Alerted) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-tertiary-fixed/10">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold text-xs">
+                          #5
+                        </div>
+<div>
+<div class="font-bold text-tertiary">Pediatrics Wing B</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Lead: Dr. Chen &amp; Team</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular font-bold text-on-surface">
+                      110
+                    </td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="font-bold text-on-surface">22.6m</span>
+<span class="text-tertiary text-xs block font-bold">+5.1m vs ML</span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-data-tabular text-data-tabular font-bold">3 PAs</span>
+</td>
+<td class="py-3.5 px-3 text-right font-data-tabular text-data-tabular">
+<span class="inline-flex items-center gap-1 font-bold text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span>
+                        94.1%
+                      </span>
+</td>
+<td class="py-3.5 px-3 text-center">
+<span class="text-tertiary font-bold text-sm">↘ -3.4%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination / View All -->
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Showing top 5 of 12 clinical wings</span>
+<button class="font-bold text-primary hover:underline flex items-center gap-1">
+<span>View Full Diagnostic Directory</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- AI Outlier & Anomaly Ledger (4 cols) -->
+<div class="xl:col-span-4 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[22px]" data-icon="fmd_bad">fmd_bad</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">AI Outlier &amp; Anomaly Ledger</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-badge-label text-badge-label">
+                2 Active
+              </span>
+</div>
+<!-- Ledger Items -->
+<div class="space-y-3.5">
+<!-- Anomaly 1 -->
+<div class="p-3.5 rounded-xl border border-tertiary-container/30 bg-tertiary-fixed/15 space-y-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-tertiary font-bold uppercase">
+<span class="w-2 h-2 rounded-full bg-tertiary pulse-indicator"></span>
+                    Resource Bottleneck
+                  </span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">14 mins ago</span>
+</div>
+<div class="font-title-card text-title-card text-on-surface font-bold">
+                  Orthopedics Plaster Bay 3 Recurring Delay
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Consistently observing a <strong>+18m delay</strong> due to mobile X-ray cart sharing between Plaster Bay 2 and Bay 3.
+                </p>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary font-semibold">Suggested Action:</span>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container text-on-surface font-body-sm text-body-sm font-semibold transition-colors">
+                    Re-route Cart #4
+                  </button>
+</div>
+</div>
+<!-- Anomaly 2 -->
+<div class="p-3.5 rounded-xl border border-outline-variant/40 bg-surface-container-low space-y-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-[#C47C10] font-bold uppercase">
+<span class="w-2 h-2 rounded-full bg-[#FFBF69]"></span>
+                    Predictive Pattern
+                  </span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">Today 11:30 AM</span>
+</div>
+<div class="font-title-card text-title-card text-on-surface font-bold">
+                  Pediatric Walk-In Spike Detected
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Surge pattern repeats Wednesdays at 11:30 AM. 14 unexpected walk-ins queued, threatening the 15-minute SLA ceiling.
+                </p>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary font-semibold">AI Automated Action:</span>
+<span class="font-data-tabular text-data-tabular text-secondary font-bold">2 Floaters Assigned</span>
+</div>
+</div>
+<!-- Anomaly 3 (Resolved) -->
+<div class="p-3 rounded-xl border border-outline-variant/20 bg-surface-container-lowest space-y-1 opacity-75">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-secondary font-bold uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+                    Resolved at 09:40
+                  </span>
+<span class="font-data-tabular text-data-tabular text-outline">Earlier Today</span>
+</div>
+<div class="font-body-medium text-body-medium font-semibold text-on-surface">
+                  Cardiology ECG Calibration Drift
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Resolved by biomedical tech dispatch. Room 4 re-certified in 11 minutes.
+                </p>
+</div>
+</div>
+</div>
+<!-- Bottom Audit Trail Link -->
+<div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-outline">Ledger updated in real-time</span>
+<button class="font-body-sm text-body-sm text-primary font-bold hover:underline">
+              Download Audit Ledger
+            </button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. ENTERPRISE STATUS FOOTER (CLINICAL COMPLIANCE & TELEMETRY SYNC)         -->
+<!-- ========================================================================= -->
+<footer class="mt-12 pt-6 pb-8 border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-4 text-body-sm font-body-sm text-on-surface-variant">
+<!-- Left: Compliance Badges -->
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="verified_user">verified_user</span>
+<span>HIPAA Compliant Analytics Engine</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5 font-data-tabular text-data-tabular">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed pulse-indicator"></span>
+<span>12ms Live Stream Latency</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="cloud_done">cloud_done</span>
+<span>FHIR &amp; HL7 v2 / v3 Synced</span>
+</div>
+</div>
+<!-- Right: Diagnostic ID & Clinic Region -->
+<div class="flex items-center gap-4 font-data-tabular text-data-tabular">
+<span>Regional Cluster: US-EAST-CLINIC-09</span>
+<span class="text-outline-variant">•</span>
+<span class="text-outline">MediFlow AI Build 2024.10.31</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
