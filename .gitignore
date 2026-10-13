@@ -13,6 +13,17 @@ dist-ssr
 *.local
 *.tsbuildinfo
 
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.db
+*.sqlite
+*.sqlite3
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
