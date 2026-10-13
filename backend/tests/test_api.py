@@ -129,3 +129,26 @@ def test_modular_integrations_endpoints():
         assert fhir_patient["resourceType"] == "Patient"
         assert fhir_patient["id"] == "MRN-78291"
 
+def test_websocket_queue_broadcasts():
+    with TestClient(app) as client:
+        # Establish active WebSocket connection
+        with client.websocket_connect("/ws/queue") as websocket:
+            # Authenticate as staff to trigger broadcast
+            login_resp = client.post("/api/v1/auth/login", json={
+                "email": "receptionist@mediflow.ai",
+                "password": "staffpassword123"
+            })
+            token = login_resp.json()["access_token"]
+            headers = {"Authorization": f"Bearer {token}"}
+
+            # 1. Trigger call-next endpoint
+            call_resp = client.post("/api/v1/queue/call-next", headers=headers)
+            assert call_resp.status_code == 200
+
+            # 2. Receive broadcast message via WebSocket
+            message = websocket.receive_json()
+            assert message["type"] == "QUEUE_TOKEN_CALLED"
+            assert "token_number" in message["data"]
+            assert "room_number" in message["data"]
+
+
