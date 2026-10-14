@@ -1,4 +1,5 @@
-# Stage 1: Build React 18 + Vite static bundle
+
+# Stage 1: Build React + Vite frontend
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -9,33 +10,37 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with lightweight Nginx alpine
+# Stage 2: Serve frontend with Nginx
 FROM nginx:alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Custom Nginx configuration supporting SPA client-side routing & WebSocket reverse-proxying
-RUN echo 'server { \
-    listen 80; \
-    server_name localhost; \
-    location / { \
-        root /usr/share/nginx/html; \
-        index index.html index.htm; \
-        try_files $uri $uri/ /index.html; \
-    } \
-    location /api/ { \
-        proxy_pass http://backend:8000/api/; \
-        proxy_set_header Host $host; \
-        proxy_set_header X-Real-IP $remote_addr; \
-    } \
-    location /ws/ { \
-        proxy_pass http://backend:8000/ws/; \
-        proxy_http_version 1.1; \
-        proxy_set_header Upgrade $http_upgrade; \
-        proxy_set_header Connection "Upgrade"; \
-        proxy_set_header Host $host; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+RUN printf '%s\n' \
+'server {' \
+'    listen 80;' \
+'    server_name _;' \
+'    root /usr/share/nginx/html;' \
+'    index index.html;' \
+'    location / {' \
+'        try_files $uri $uri/ /index.html;' \
+'    }' \
+'    location /api/ {' \
+'        proxy_pass https://mediflow-ai-iqnd.onrender.com/api/;' \
+'        proxy_ssl_server_name on;' \
+'        proxy_set_header Host mediflow-ai-iqnd.onrender.com;' \
+'        proxy_set_header X-Real-IP $remote_addr;' \
+'        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' \
+'        proxy_set_header X-Forwarded-Proto $scheme;' \
+'    }' \
+'    location /ws/ {' \
+'        proxy_pass https://mediflow-ai-iqnd.onrender.com/ws/;' \
+'        proxy_ssl_server_name on;' \
+'        proxy_http_version 1.1;' \
+'        proxy_set_header Upgrade $http_upgrade;' \
+'        proxy_set_header Connection "upgrade";' \
+'        proxy_set_header Host mediflow-ai-iqnd.onrender.com;' \
+'    }' \
+'}' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
